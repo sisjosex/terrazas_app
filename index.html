@@ -15,25 +15,25 @@
     <link rel="stylesheet" href="lib/onsen/css/onsen-css-components-blue-basic-theme.css"/>
     <link rel="stylesheet" href="styles/app.css"/>
 
-    <script src="cordova.js"></script>
-    <script src="jquery1.7.1.min.js"></script>
-    <script src="lib/onsen/js/angular/angular.min.js"></script>
-    <script src="jquery1.7.1.min.js"></script>
-    <script src="lib/onsen/js/onsenui.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="jquery1.7.1.min.js"></script>
+    <script type="text/javascript" src="lib/onsen/js/angular/angular.min.js"></script>
+    <script type="text/javascript" src="jquery1.7.1.min.js"></script>
+    <script type="text/javascript" src="lib/onsen/js/onsenui.js"></script>
 
-    <script src="lib/moment.js"></script>
+    <script type="text/javascript" src="lib/moment.js"></script>
 
-    <script src="js/constants.js"></script>
-    <script src="js/notifications.js"></script>
-    <script src="js/language.js"></script>
-    <script src="js/util.js"></script>
-    <script src="js/templates.js"></script>
+    <script type="text/javascript" src="js/constants.js"></script>
+    <script type="text/javascript" src="js/notifications.js"></script>
+    <script type="text/javascript" src="js/language.js"></script>
+    <script type="text/javascript" src="js/util.js"></script>
+    <script type="text/javascript" src="js/templates.js"></script>
 
-    <script src="lib/iscroll/iscroll.js"></script>
+    <script type="text/javascript" src="lib/iscroll/iscroll.js"></script>
 
     <!--<script src="lib/easyscroller.js"></script>-->
     <!--<script src="lib/ftscroller.js"></script>-->
-    <script src="js/app.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
 </head>
 
 <body>
@@ -76,9 +76,10 @@
                 </div>
 
                 <div class="horizontal">
-                    <div class="button nobutton cuadrado la_carta" onclick="splash.pushPage('carta.html')"></div>
+                    <div class="button nobutton cuadrado la_carta" onclick="goToCarta()"></div>
                     <div class="button nobutton cuadrado menu"></div>
-                    <div class="button nobutton cuadrado grupos" onclick="goToGruposCategoria('menu_para_grupos')"></div>
+                    <div class="button nobutton cuadrado grupos"
+                         onclick="goToGruposCategoria('menu_para_grupos')"></div>
                     <div class="button nobutton cuadrado nosotros"></div>
                 </div>
 
@@ -108,53 +109,29 @@
         </ons-toolbar>
 
         <div id="carta_scroll" class="scrollable">
-            <div class="horizontal">
-                <div class="title a_la_carta">
-                    {{labels.a_la_carta}}
-                </div>
-            </div>
-
-            <div id="carta_list" class="scroll-content">
-                <ons-list>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToCartaDetalle('entrante')"><div class="list-item entrante">{{labels.entrantes}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToCartaDetalle('primero')"><div class="list-item primero">{{labels.primeros}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToCartaDetalle('pescado')"><div class="list-item pescado">{{labels.pescados}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToCartaDetalle('asado_carne')"><div class="list-item asado_carne">{{labels.asados_carnes}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToCartaDetalle('comida_para_llevar')"><div class="list-item comida_para_llevar">{{labels.comida_para_llevar}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToVinosCategoria('nuestros_vinos')"><div class="list-item nuestros_vinos">{{labels.nuestros_vinos}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToGruposCategoria('menu_para_grupos')"><div class="list-item menu_para_grupos">{{labels.menu_para_grupos}}</div></div></ons-list-item>
-                </ons-list>
-            </div>
-        </div>
-    </ons-page>
-</ons-template>
-
-<ons-template id="carta_detalle.html">
-    <ons-page ng-controller="CartaDetalleController" var="cartaDetalle" class="normal-page">
-        <ons-toolbar class="toolbar">
-            <div class="center header-title">
-                <div class="backButton" onclick="splash.popPage('carta_detalle.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
-            </div>
-        </ons-toolbar>
-
-        <div id="carta_detalle_scroll" class="scrollable">
-            <div class="horizontal">
-                <div class="title a_la_carta">
-                    {{labels.a_la_carta}}
-                </div>
-            </div>
-
-            <div id="carta_list" class="scroll-content">
-                <div class="page-custom box">
-
-                    <div class="horizontal">
-                        <div class="subtitle {{clase}}">
-                            {{subtitle}}
-                        </div>
+            <div class="scroll-content">
+                <div class="horizontal">
+                    <div class="title">
+                        {{labels.a_la_carta}}
                     </div>
+                </div>
 
-                    <div id="carta_list_content"></div>
+                <div>
+                    <div class="horizontal">
+                        <div class="button nobutton tres btn_entrantes" onclick="goToCartaDetalle('entrante')"></div>
+                        <div class="button nobutton tres btn_primeros" onclick="goToCartaDetalle('primero')"></div>
+                        <div class="button nobutton tres btn_pescados" onclick="goToCartaDetalle('pescado')"></div>
+                    </div>
+                    <div class="horizontal">
+                        <div class="button nobutton tres btn_carnes" onclick="goToCartaDetalle('asado_carne')"></div>
+                        <div class="button nobutton tres btn_para_llevar"
+                             onclick="goToCartaDetalle('comida_para_llevar')"></div>
+                        <div class="button nobutton tres btn_bodega"
+                             onclick="goToVinosCategoria('nuestros_vinos')"></div>
+                    </div>
+                </div>
+
+                <div id="carta_list">
                 </div>
             </div>
         </div>
@@ -230,9 +207,21 @@
 
             <div id="grupo_list" class="scroll-content">
                 <ons-list>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToGruposDetalle('eventos')"><div class="list-item entrante">{{labels.eventos}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToGruposDetalle('bautizos')"><div class="list-item entrante">{{labels.bautizos}}</div></div></ons-list-item>
-                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToGruposDetalle('comuniones')"><div class="list-item entrante">{{labels.comuniones}}</div></div></ons-list-item>
+                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron">
+                        <div class="arrow" onclick="goToGruposDetalle('eventos')">
+                            <div class="list-item entrante">{{labels.eventos}}</div>
+                        </div>
+                    </ons-list-item>
+                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron">
+                        <div class="arrow" onclick="goToGruposDetalle('bautizos')">
+                            <div class="list-item entrante">{{labels.bautizos}}</div>
+                        </div>
+                    </ons-list-item>
+                    <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron">
+                        <div class="arrow" onclick="goToGruposDetalle('comuniones')">
+                            <div class="list-item entrante">{{labels.comuniones}}</div>
+                        </div>
+                    </ons-list-item>
                 </ons-list>
             </div>
         </div>

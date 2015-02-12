@@ -32,20 +32,27 @@ function resizeCardCarousel() {
 function onError() {}
 
 var current_list = [];
+var carta_data = {};
+function goToCarta() {
+
+    getJsonP(api_url + 'get_carta', function(data){
+
+        carta_data = data;
+
+        splash.pushPage('carta.html', {});
+
+    }, function(){}, {});
+}
+
 function goToCartaDetalle(section) {
 
-    getJsonP(api_url + 'get_platos', function(data){
+    $('#carta_list').html('');
 
-        current_list = data;
+    loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_content');
 
-        splash.pushPage('carta_detalle.html', {section: section});
+    ons.compile($('#carta_scroll')[0]);
 
-        if(current_list.list) {
-
-
-        }
-
-    }, function(){}, {tipo_plato: section});
+    initScroll('carta_scroll');
 }
 
 function goToVinosCategoria(id) {
@@ -218,6 +225,8 @@ module.controller('CartaController', function($scope) {
 
         $scope.labels = getLabels();
 
+        loadIntoTemplate('#carta_list', carta_data.entrante, 'carta_list_content');
+
         ons.compile($('#carta_scroll')[0]);
 
         initScroll('carta_scroll');
@@ -242,43 +251,6 @@ module.controller('VinosController', function($scope) {
 
         initScroll('vinos_scroll');
 
-    });
-});
-
-var scopeCartaDetalleController;
-module.controller('CartaDetalleController', function($scope) {
-    ons.ready(function() {
-
-        scopeCartaDetalleController = this;
-
-        current_page = 'carta_detalle.html';
-
-        $scope.labels = getLabels();
-
-        loadIntoTemplate('#carta_list_content', current_list.list, 'carta_list_content');
-
-        $scope.subtitle = current_list.tipo_plato_text;
-        $scope.clase = current_list.tipo_plato;
-
-        texto_comida_rapida = '';
-
-        if( current_list.tipo_plato == "comida_para_llevar" ) {
-
-            if(applicationLanguage == "es") {
-
-                texto_comida_rapida = "<span class='pedidos_text'> (Los pedidos son v&iacute;a telef&oacute;nica <b>91-853-8002</b>) </span>";
-
-            } else if(applicationLanguage == "en"){
-
-                texto_comida_rapida = "<span class='pedidos_text'> (Telephone orders are <b>91-853-8002</b>) </span>";
-            }
-
-            $('.page-custom .subtitle').append(texto_comida_rapida);
-        }
-
-        ons.compile($('#carta_detalle_scroll')[0]);
-
-        initScroll('carta_detalle_scroll');
     });
 });
 

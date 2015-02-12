@@ -1038,6 +1038,39 @@ label.checkbox {
     background-size: 100% 100%;
 }
 
+.tres {
+    min-width: 100px;
+    height: 42px;
+    margin: 0;
+}
+
+.btn_entrantes {
+    background: url('../img/btn_entrantes.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+}
+
+.btn_primeros{
+    background: url('../img/btn_primeros.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+}
+.btn_pescados{
+    background: url('../img/btn_pescados.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+}
+.btn_carnes{
+    background: url('../img/btn_carnes.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+}
+.btn_para_llevar{
+    background: url('../img/btn_para_llevar.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+}
+.btn_bodega{
+    background: url('../img/btn_bodega.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+}
+
+
 .header-title {
     background: url('../img/logo.png') center center no-repeat #fff;
     background-size: auto 86%;
@@ -1119,6 +1152,7 @@ label.checkbox {
     font-size: 30px;
     padding-top: 10px;
     padding-bottom: 10px;
+    color:#744d12;
 }
 
 .title.a_la_carta {
@@ -1153,12 +1187,17 @@ label.checkbox {
     margin-right: 10px;
 }
 
+#carta_list {
+    margin:10px;
+}
+
 .price-row {
     display:table;
     display: table;
     border-top-width: 1px;
     border-top-color: black;
     border-top-style: dashed;
+    border-top-color: #b27814;
     padding-top: 5px;
     padding-bottom: 5px;
 }
@@ -1176,11 +1215,16 @@ label.checkbox {
 }
 
 .price-row .name, .price-row .price {
-    font-family: 'a_song_for_jennifer_bold';
-    font-size: 14px;
+    font-family: 'tillium-regular';
+    font-size:14px;
     font-weight: normal;
-    font-style: italic;
+    font-style: normal;
+    color:#412811;
     text-align: left;
+}
+
+.price-row .price {
+    color:#b27814;
 }
 
 .subtitle {
