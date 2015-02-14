@@ -55,6 +55,17 @@ function goToCartaDetalle(section) {
     initScroll('carta_scroll');
 }
 
+function goToVinoDetalle(section) {
+
+    $('#carta_list').html('');
+
+    loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
+
+    ons.compile($('#carta_scroll')[0]);
+
+    initScroll('carta_scroll');
+}
+
 function goToVinosCategoria(id) {
 
     getJsonP(api_url + 'get_categoria_vinos', function(data){
@@ -71,9 +82,69 @@ function goToVinosCategoria(id) {
     }, function(){}, {id: id});
 }
 
-function goToGruposCategoria(id) {
+function goToMenuDiario() {
 
-    splash.pushPage('grupo.html', {id: id});
+    getJsonP(api_url + 'get_menudiario', function(data){
+
+        current_list = data;
+
+        splash.pushPage('menudiario.html', {});
+
+        if(current_list.list) {
+
+
+        }
+
+    }, function(){}, {});
+}
+
+function goToAmbientes() {
+
+    getJsonP(api_url + 'get_ambientes', function (data) {
+
+        current_list = data;
+
+        splash.pushPage('page.html', {});
+
+        if (current_list.list) {
+
+
+        }
+
+    }, function () {
+    }, {});
+}
+
+function goToAlertas() {
+
+    getJsonP(api_url + 'get_novedades', function (data) {
+
+        current_list = data;
+
+        splash.pushPage('novedades.html', {});
+
+        if (current_list.list) {
+
+
+        }
+
+    }, function () {
+    }, {});
+}
+
+function goToGruposCategoria() {
+
+    getJsonP(api_url + 'get_menu_grupos', function(data){
+
+        current_list = data;
+
+        splash.pushPage('grupo.html', {});
+
+        if(current_list.list) {
+
+        }
+
+    }, function(){}, {});
 }
 
 function goToGruposDetalle(id) {
@@ -92,20 +163,20 @@ function goToGruposDetalle(id) {
     }, function(){}, {categoria_menu: id});
 }
 
-function goToVinoDetalle(id) {
+function getNosotros() {
 
-    getJsonP(api_url + 'get_vinos', function(data){
+    getJsonP(api_url + 'get_laterraza', function(data){
 
         current_list = data;
 
-        splash.pushPage('vino_detalle.html', {id: id});
+        splash.pushPage('page.html', {});
 
         if(current_list.list) {
 
 
         }
 
-    }, function(){}, {id: id});
+    }, function(){}, {});
 }
 
 function loadApplicationParams(callback) {
@@ -119,6 +190,16 @@ function loadApplicationParams(callback) {
     }, function(){
 
     }, {});
+}
+
+function refreshPageScroll() {
+
+    scrolls['page_scroll'].refresh();
+}
+
+function refreshNovedadesScroll() {
+
+    scrolls['novedades_scroll'].refresh();
 }
 
 closeDetailSession = function() {
@@ -235,6 +316,48 @@ module.controller('CartaController', function($scope) {
 });
 
 
+var scopeMenuDiarioController;
+module.controller('MenuDiarioController', function($scope) {
+    ons.ready(function() {
+
+        scopeMenuDiarioController = this;
+
+        current_page = 'menudiario.html';
+
+        $scope.labels = getLabels();
+
+        if(current_list.data.dia_spanish)
+            $scope.title = current_list.data.dia_spanish + ' - ' + current_list.data.dia_numerico + ' ' + current_list.data.mes_spanish;
+
+        var content = '';
+        if(current_list.data.tipo_menu == 'diario') {
+
+            if(current_list.data.primeros) {
+                content += '<h3>Primeros</h3><div class="description_listado">' + $(current_list.data.primeros).text() + '</div>';
+            }
+
+            if(current_list.data.segundos) {
+                content += '<h3>Primeros</h3><div class="description_listado">' + current_list.data.primeros + '</div>';
+            }
+
+            if(current_list.data.precio_descripcion) {
+                content += '<h3 class="normal">'+ current_list.data.precio_descripcion + '&euro;</h3>';
+            }
+        }
+
+        if(current_list.data.especialidades) {
+            content += '<h3>RECOMENDACIONES</h3><div class="description_listado">' + current_list.data.especialidades + '</div>';
+        }
+
+        $('#menu_diario_content').html(content);
+
+        ons.compile($('#menu_diario_content')[0]);
+
+        initScroll('menudiario_scroll');
+
+    });
+});
+
 var scopeVinosController;
 module.controller('VinosController', function($scope) {
     ons.ready(function() {
@@ -250,6 +373,44 @@ module.controller('VinosController', function($scope) {
         ons.compile($('#vinos_scroll')[0]);
 
         initScroll('vinos_scroll');
+
+    });
+});
+
+var PageController;
+module.controller('PageController', function($scope) {
+    ons.ready(function() {
+
+        scopeVinosController = this;
+
+        current_page = 'page.html';
+
+        $scope.labels = getLabels();
+
+        loadIntoTemplate('#page_content', current_list.list, 'page_list_content');
+
+        ons.compile($('#page_content')[0]);
+
+        initScroll('page_scroll');
+
+    });
+});
+
+var NovedadesController;
+module.controller('NovedadesController', function($scope) {
+    ons.ready(function() {
+
+        scopeVinosController = this;
+
+        current_page = 'novedades.html';
+
+        $scope.labels = getLabels();
+
+        loadIntoTemplate('#novedades_content', current_list.list, 'novedades_list_content');
+
+        ons.compile($('#novedades_content')[0]);
+
+        initScroll('novedades_scroll');
 
     });
 });
@@ -289,9 +450,14 @@ module.controller('GrupoController', function($scope) {
 
         current_page = 'grupo.html';
 
+        $('#grupos_descripcion').html(current_list.page.description);
+        $('#grupos_descripcion').html($('#grupos_descripcion').text());
+
+        loadIntoTemplate('#grupo_list_content', current_list.list, 'grupo_list_content');
+
         $scope.labels = getLabels();
 
-        initScroll('grupo_list');
+        initScroll('grupo_scroll');
 
     });
 });

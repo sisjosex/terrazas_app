@@ -1081,7 +1081,20 @@ label.checkbox {
 }
 
 .list-item {
-    padding-left: 50px;
+}
+
+.list-item .image, .list-item .list_title {
+    display: table-cell;
+    vertical-align: top;
+    min-width: 100px;
+}
+
+.list-item .image {
+}
+
+.list-item .list_title {
+    padding-left:5px;
+    padding-right: 30px;
 }
 
 .entrante {
@@ -1103,12 +1116,15 @@ label.checkbox {
     padding-top:5px;
     padding-bottom:5px;
     border-bottom: 1px solid #fff;
+    padding:0;
 }
 
 .list-item {
     width:100%;
     font-size:15px;
     font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 .primero {
@@ -1206,6 +1222,13 @@ label.checkbox {
     border:none;
 }
 
+.price-row.vinos_list {
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+    border-bottom-style: dashed;
+    border-bottom-color: #b27814;
+}
+
 .price-row .name, .price-row .price {
     display:table-cell;
 }
@@ -1233,4 +1256,107 @@ label.checkbox {
     padding-top: 10px;
     padding-bottom: 10px;
     line-height:14px;
+}
+
+.description * {
+    color: #535353;
+    font-family: 'tillium-regular';
+    font-size: 15px;
+    font-weight: lighter;
+}
+
+.scrollfix {
+    padding-bottom:20px;
+}
+
+.list {
+    margin:10px;
+}
+
+.grupo.list .price-row {
+    border:none;
+    border-bottom-width: 1px;
+    border-bottom-color: black;
+    border-bottom-style: dashed;
+    border-bottom-color: #b27814;
+    margin-top: 10px;
+}
+
+.grupo.list .price-row:first-child {
+    margin-top: 0;
+}
+
+.grupo.list .name{
+    color:#412811;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size:16px;
+}
+
+.grupo.list .price {
+    color:#b27814;
+    font-weight: bold;
+    font-size:16px;
+}
+
+.menu_grupo_content h4, .menu_grupo_content h4 b{
+    color:#b27814;
+    font-weight: bold;
+    margin:0;
+    padding:0;
+    font-size:16px;
+    padding-top: 10px;
+}
+
+.menu_grupo_content p {
+    margin:0;
+}
+
+#menu_diario_content {
+    margin:10px;
+}
+
+.scrollable img {
+    max-width:100%;
+    width:100%;
+    height:auto;
+}
+
+.novedades img {
+    width:100px;
+    height:auto;
+}
+
+figure {
+    margin:0;
+}
+
+.list_title {
+
+}
+
+.novedad_titulo {
+    display:block;
+    font-size:16px;
+    font-weight: bold;
+    line-height: 20px;
+    overflow:hidden;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+}
+
+.novedad_fecha {
+    display:block;
+    font-size:12px;
+    line-height: 12px;
+    font-weight: normal;
+}
+
+.short_desc {
+    margin: 0;
+    padding: 0;
+    line-height: 18px;
+    display: block;
+    font-weight: normal;
+    font-size: 14px;
 }
