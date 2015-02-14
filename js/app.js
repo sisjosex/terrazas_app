@@ -44,6 +44,11 @@ function goToCarta() {
     }, function(){}, {});
 }
 
+function goToLocalizacion() {
+
+    splash.pushPage('localizacion.html', {});
+}
+
 function goToCartaDetalle(section) {
 
     $('#carta_list').html('');
@@ -245,6 +250,43 @@ module.controller('SplashController', function($scope) {
 
             splash.pushPage('main.html');
 
+        });
+
+    });
+});
+
+var scopeLocalizacionController;
+var map;
+module.controller('LocalizacionController', function($scope){
+
+    ons.ready(function(){
+
+        var latLong = new google.maps.LatLng(40.71535,-3.98943);
+
+        map = new google.maps.Map(document.getElementById('map'), {
+            center: latLong,
+            zoom: 18,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        var marker = new google.maps.Marker({
+            map: map,
+            //position: new google.maps.LatLng(lat, lng),
+            title: "move this marker",
+            //icon: image,
+            //shadow: shadow,
+            //shape: shape
+            position: latLong,
+            animation:google.maps.Animation.DROP,
+            draggable:false
+        });
+
+        var infowindow = new google.maps.InfoWindow();
+        infowindow.setContent("<p style='color:red;font-weight:bold;'><img width='150' src='img/logo.png'/></p>");
+        infowindow.open(map,marker);
+
+        google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
         });
 
     });

@@ -1093,8 +1093,11 @@ label.checkbox {
 }
 
 .list-item .list_title {
-    padding-left:5px;
-    padding-right: 30px;
+    padding-left: 5px;
+    padding-right: 35px;
+    word-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
 }
 
 .entrante {
@@ -1123,8 +1126,8 @@ label.checkbox {
     width:100%;
     font-size:15px;
     font-weight: bold;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .primero {
@@ -1359,4 +1362,18 @@ figure {
     display: block;
     font-weight: normal;
     font-size: 14px;
+}
+
+.bg_info {
+    width: 262px;
+    text-align: center;
+    background: url('../img/bg_info.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+    height: 175px;
+    top: 50%;
+    position: relative;
+    left: 50%;
+    margin-left: -132px;
+    margin-top: 67px;
+    padding-top: 121px;
 }
