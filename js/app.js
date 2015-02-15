@@ -235,6 +235,10 @@ function getNosotros() {
 
 function loadApplicationParams(callback) {
 
+    try {
+        StatusBar.hide();
+    }catch(error){}
+
     getJsonPBackground(api_url + 'getParams/', function(data){
 
 
