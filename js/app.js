@@ -386,7 +386,11 @@ module.controller('HomeController', function($scope) {
 
         resizeCardCarousel();
 
-        refreshHomeScroll();
+        setTimeout(function(){
+
+            refreshHomeScroll();
+
+        }, 200);
 
     });
 });
