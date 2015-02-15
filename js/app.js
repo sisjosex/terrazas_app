@@ -237,13 +237,22 @@ function loadApplicationParams(callback) {
 
     getJsonPBackground(api_url + 'getParams/', function(data){
 
+
+
         applicationParams = data;
 
         callback();
 
     }, function(){
 
+
+
     }, {});
+}
+
+function refreshHomeScroll() {
+
+    scrolls['main_scroll'].refresh();
 }
 
 function refreshPageScroll() {
@@ -366,6 +375,7 @@ module.controller('HomeController', function($scope) {
 
         $('#guest_paginator > li:nth-child(1)').addClass('selected');
 
+        //navigator.splashscreen.hide();
         try { navigator.splashscreen.hide(); } catch(error){}
 
         loadIntoTemplate('#home_images', applicationParams.slider, 'slider_images');
@@ -375,6 +385,8 @@ module.controller('HomeController', function($scope) {
         initScroll('main_scroll');
 
         resizeCardCarousel();
+
+        refreshHomeScroll();
 
     });
 });
