@@ -71,6 +71,18 @@ function goToVinoDetalle(section) {
     initScroll('carta_scroll');
 }
 
+function goToNovedadDetalle(index, event) {
+/*
+    event.preventDefault();
+    event.stopPropagation();*/
+
+    current_noticia = current_list.list[index];
+
+    splash.pushPage('noticia.html', {});
+
+    event.stopPropagation();
+}
+
 function goToVinosCategoria(id) {
 
     getJsonP(api_url + 'get_categoria_vinos', function(data){
@@ -85,6 +97,43 @@ function goToVinosCategoria(id) {
         }
 
     }, function(){}, {id: id});
+}
+
+function goToGalerias() {
+
+    splash.pushPage('galerias.html', {});
+}
+
+function goToGaleriaList(id) {
+    getJsonP(api_url + 'get_galeria', function(data){
+
+        current_list = data;
+
+        splash.pushPage('galeria.html', {galeria_id: id});
+
+        if(current_list.list) {
+
+
+        }
+
+    }, function(){}, {galeria_id: id});
+}
+
+var current_foto;
+function goToFoto(index) {
+
+    console.log(current_page);
+
+    if(current_page != 'foto.html') {
+
+        current_page = 'foto.html';
+
+        modal.show();
+
+        current_foto = current_list.list[index];
+
+        splash.pushPage('foto.html', {index: index});
+    }
 }
 
 function goToMenuDiario() {
@@ -205,6 +254,16 @@ function refreshPageScroll() {
 function refreshNovedadesScroll() {
 
     scrolls['novedades_scroll'].refresh();
+}
+
+function refreshNoticiaScroll() {
+
+    scrolls['noticia_scroll'].refresh();
+}
+
+function refreshGaleriaScroll() {
+
+    scrolls['galeria_scroll'].refresh();
 }
 
 closeDetailSession = function() {
@@ -357,6 +416,56 @@ module.controller('CartaController', function($scope) {
     });
 });
 
+var scopeGaleriaController;
+module.controller('GaleriaController', function($scope) {
+    ons.ready(function() {
+
+        scopeCartaController = this;
+
+        current_page = 'galeria.html';
+
+        if(splash.getCurrentPage().options.galeria_id == '3') {
+
+            $('#galeria_title').html('Galeria<br><span class="subsubtitle">(salones)</span>');
+
+        } else {
+
+            $('#galeria_title').html('Galeria<br><span class="subsubtitle">(platos comida)</span>');
+        }
+
+        $('#galeria_content').html('');
+
+        loadIntoTemplate('#galeria_content', current_list.list, 'fotos_list_content');
+
+        ons.compile($('#galeria_scroll')[0]);
+
+        initScroll('galeria_scroll');
+
+    });
+});
+
+var scopeFotoController;
+var gesturableImg;
+module.controller('FotoController', function($scope) {
+    ons.ready(function() {
+
+        scopeFotoController = this;
+
+        current_page = 'foto.html';
+
+        $('#foto_image').attr('src', 'http://lasterrazasdebecerril.es/img/fotos/thumbnails/' + current_foto.url);
+
+        /*gesturableImg = new ImgTouchCanvas({
+            canvas: document.getElementById('foto_canvas'),
+            path: 'http://lasterrazasdebecerril.es/img/fotos/' + current_foto.url,
+            onload: function() {
+                modal.hide();
+            }
+        });*/
+
+    });
+});
+
 
 var scopeMenuDiarioController;
 module.controller('MenuDiarioController', function($scope) {
@@ -419,6 +528,21 @@ module.controller('VinosController', function($scope) {
     });
 });
 
+var scopeGaleriasController;
+module.controller('GaleriasController', function($scope) {
+    ons.ready(function() {
+
+        scopeGaleriasController = this;
+
+        current_page = 'galerias.html';
+
+        $scope.labels = getLabels();
+
+        initScroll('galerias_scroll');
+
+    });
+});
+
 var PageController;
 module.controller('PageController', function($scope) {
     ons.ready(function() {
@@ -438,11 +562,11 @@ module.controller('PageController', function($scope) {
     });
 });
 
-var NovedadesController;
+var scopeNovedadesController;
 module.controller('NovedadesController', function($scope) {
     ons.ready(function() {
 
-        scopeVinosController = this;
+        scopeNovedadesController = this;
 
         current_page = 'novedades.html';
 
@@ -453,6 +577,25 @@ module.controller('NovedadesController', function($scope) {
         ons.compile($('#novedades_content')[0]);
 
         initScroll('novedades_scroll');
+
+    });
+});
+
+var scopeNoticiaController;
+module.controller('NoticiaController', function($scope) {
+    ons.ready(function() {
+
+        scopeNoticiaController = this;
+
+        current_page = 'noticia.html';
+
+        $scope.labels = getLabels();
+
+        $('#noticia_image').attr('src', 'http://lasterrazasdebecerril.es/img/novedades/' + current_noticia.imagen);
+        $('#noticia_title').html(current_noticia.nombre);
+        $('#noticia_description').html(current_noticia.descripcion);
+
+        initScroll('noticia_scroll');
 
     });
 });
@@ -536,7 +679,8 @@ function getArrayAsObjects(array, width, height) {
     height = height*2;
 
     for(var i in array) {
-        result.push({list_image:array[i], selected:i === 0 ? 'selected' : ''});
+        result.push({list_image:array[i]});
+        //result.push({list_image:array[i], selected:i === 0 ? 'selected' : ''});
         /*if(width && height) {
             result.push({list_image: thumb_url.replace('%width%', width).replace('%height%', height) + array[i], selected:i === 0 ? 'selected' : ''});
         } else {
@@ -565,7 +709,7 @@ function getJsonP(url, callback_success, callback_error, data) {
         url: url,
         data: data,
         dataType: 'JSONp',
-        timeout: 2000,
+        timeout: 20000,
         async:true,
         success: function(data) {
 
@@ -599,7 +743,7 @@ function getJsonPBackground(url, callback_success, callback_error, data) {
         url: url,
         data: data,
         dataType: 'JSONp',
-        timeout: 2000,
+        timeout: 20000,
         async:true,
         success: function(data) {
 
@@ -659,7 +803,7 @@ function initScroll(div) {
     if(!scrolls[div]) {
 
         //scrolls[div] = new IScroll('#' + div, {hScrollbar: false, vScrollbar: false});
-        scrolls[div] = new iScroll(div, {momentum:true, hScrollbar:false, vScrollbar:false, click: true, checkDOMChanges: true});
+        scrolls[div] = new iScroll(div, {momentum:true, hScrollbar:false, vScrollbar:false, click: true, tap: true, checkDOMChanges: true});
 
     } else {
 
@@ -667,7 +811,7 @@ function initScroll(div) {
         scrolls[div].scrollTo(0,0);
         setTimeout(function(){
             scrolls[div].destroy();
-            scrolls[div] = new iScroll(div, {momentum:true, hScrollbar:false, vScrollbar:false, click: true, checkDOMChanges: true});
+            scrolls[div] = new iScroll(div, {momentum:true, hScrollbar:false, vScrollbar:false, click: true, tap: true, checkDOMChanges: true});
         }, 10);
         //scrolls[div].refresh();
         //scrolls[div].destroy();scrolls[div] = new IScroll('#' + div, {hScrollbar: false, vScrollbar: false});

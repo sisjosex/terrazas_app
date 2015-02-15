@@ -31,6 +31,8 @@
 
     <script type="text/javascript" src="lib/iscroll/iscroll.js"></script>
 
+    <script type="text/javascript" src="lib/img-touch-canvas.js"></script>
+
     <!--<script src="lib/easyscroller.js"></script>-->
     <!--<script src="lib/ftscroller.js"></script>-->
     <script type="text/javascript" src="js/app.js"></script>
@@ -100,8 +102,8 @@
                 <div class="horizontal">
                     <div class="button nobutton cuadrado ambientes" onclick="goToAmbientes()"></div>
                     <div class="button nobutton cuadrado alertas" onclick="goToAlertas()"></div>
-                    <div class="button nobutton cuadrado galeria"></div>
-                    <div class="button nobutton cuadrado info"></div>
+                    <div class="button nobutton cuadrado galeria" onclick="goToGalerias()"></div>
+                    <div class="button nobutton cuadrado contacto" onclick="goToContacto()"></div>
                 </div>
 
                 <div class="horizontal">
@@ -202,6 +204,29 @@
     </ons-page>
 </ons-template>
 
+<ons-template id="noticia.html">
+    <ons-page ng-controller="NoticiaController" class="normal-page">
+        <ons-toolbar class="toolbar">
+            <div class="center header-title">
+                <div class="backButton" onclick="splash.popPage('noticia.html');"></div>
+                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+            </div>
+        </ons-toolbar>
+
+        <div id="noticia_scroll" class="scrollable scrollfix">
+
+            <div class="horizontal">
+
+                <img id="noticia_image" onload="refreshNoticiaScroll()"/>
+
+                <div id="noticia_title" class="title"></div>
+
+                <div id="noticia_description" class="description list" style="text-align: justify;"></div>
+            </div>
+        </div>
+    </ons-page>
+</ons-template>
+
 <ons-template id="page.html">
     <ons-page ng-controller="PageController" var="grupo" class="normal-page">
         <ons-toolbar class="toolbar">
@@ -267,7 +292,9 @@
                 <!--<img width="180" src="img/logo.png" />-->
 
                 <p>Version de la aplicación: 2.2</p>
+
                 <p>Todos los Derechos reservados &copy; {{year}}</p>
+
                 <p><a href="www.lasterrazasdebecerril.es" target="_blank">www.lasterrazasdebecerril.es</a></p>
 
             </div>
@@ -288,15 +315,106 @@
         <div id="contacto_center">
 
             <div>
-                <img width="200" src="img/logo.png" />
+                <img width="200" src="img/logo.png"/>
 
                 <p>Version de la aplicación: 2.2</p>
+
                 <p>Todos los Derechos reservados &copy; {{year}}</p>
+
                 <p><a href="www.lasterrazasdebecerril.es" target="_blank">www.lasterrazasdebecerril.es</a></p>
 
             </div>
 
         </div>
+    </ons-page>
+</ons-template>
+
+<ons-template id="galerias.html">
+    <ons-page ng-controller="GaleriasController" var="grupo" class="normal-page">
+        <ons-toolbar class="toolbar">
+            <div class="center header-title">
+                <div class="backButton" onclick="splash.popPage('galerias.html');"></div>
+                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+            </div>
+        </ons-toolbar>
+
+        <div id="galerias_scroll" class="scrollable">
+
+            <div class="scroll-content scrollfix">
+
+                <div class="title" align="center">
+                    Galeria
+                </div>
+
+                <div id="galerias_content">
+
+                    <ons-list>
+                        <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron">
+                            <div class="arrow" onclick="goToGaleriaList('3')">
+                                <div class="list-item list_restaurante">RESTAURANTE (salones)</div>
+                            </div>
+                        </ons-list-item>
+                        <ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron">
+                            <div class="arrow" onclick="goToGaleriaList('4')">
+                                <div class="list-item list_la_carta">LA CARTA (platos de comida)</div>
+                            </div>
+                        </ons-list-item>
+                    </ons-list>
+
+                </div>
+
+            </div>
+        </div>
+    </ons-page>
+</ons-template>
+
+
+<ons-template id="galeria.html">
+    <ons-page ng-controller="GaleriaController" class="normal-page">
+        <ons-toolbar class="toolbar">
+            <div class="center header-title">
+                <div class="backButton" onclick="splash.popPage('galeria.html');"></div>
+                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+            </div>
+        </ons-toolbar>
+
+        <div id="galeria_scroll" class="scrollable">
+
+            <div class="scroll-content scrollfix">
+
+                <div id="galeria_title" class="title" align="center"></div>
+
+                <div id="galeria_content">
+
+                </div>
+
+            </div>
+        </div>
+    </ons-page>
+</ons-template>
+
+<ons-template id="foto.html">
+    <ons-page ng-controller="FotoController" class="normal-page">
+        <ons-toolbar class="toolbar">
+            <div class="center header-title">
+                <div class="backButton" onclick="splash.popPage('foto.html');current_page='galeria.html';"></div>
+                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+            </div>
+        </ons-toolbar>
+
+        <!--<div id="foto_container" style="width: 100%; height: 100%">
+            <canvas id="foto_canvas" style="width: auto; height: 200px"></canvas>
+        </div>-->
+
+        <div id="foto_scroll" class="scrollable">
+
+            <div class="scroll-content scrollfix">
+
+                <img id="foto_image" onload="modal.hide();" />
+
+            </div>
+        </div>
+
     </ons-page>
 </ons-template>
 

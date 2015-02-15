@@ -4,6 +4,8 @@ var templates = {
 
     list_single: '<div class="price-row vinos_list"><div class="name">%nombre%</div><div class="price">%precio%€</div></div>',
 
+    fotos_list_content: '<div class="galeria-item button nobutton" onclick="goToFoto(%index%)"><img src="http://lasterrazasdebecerril.es/img/fotos/thumbnails/%url%" onload="refreshGaleriaScroll()"></div>',
+
     carta_list_vino_content: '<h4><div class="name">%nombre%</div></h4>'+
     '<div class="menu_grupo_content">'+
     '%items%</div>',
@@ -18,8 +20,11 @@ var templates = {
 
     vino_list_content: '<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToVinoDetalle(\'%id%\')"><div class="list-item vinos">%nombre%</div></div></ons-list-item>',
 
-    novedades_list_content: '<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron"><div class="arrow" onclick="goToVinoDetalle(\'%id%\')"><div class="list-item novedades"><div class="image"><img src="http://lasterrazasdebecerril.es/img/novedades/thumbnails/%imagen%" onload="refreshNovedadesScroll()"/></div>' +
-                            '<div class="list_title"><span class="novedad_titulo">%nombre%</span><span class="novedad_fecha">%fecha%</span><span class="short_desc">%descripcion_cut%</span></div>' +
+    novedades_list_content: '<ons-list-item class="list__item--tappable list__item__line-height" modifier="chevron" onclick="goToNovedadDetalle(%index%, event)">' +
+                            '<div class="arrow">' +
+                            '<div class="list-item novedades">' +
+                                '<div class="image"></div>' +
+                            '<div class="list_title"><p><img align="left" src="http://lasterrazasdebecerril.es/img/novedades/thumbnails/%imagen%" onload="refreshNovedadesScroll()"/><span class="novedad_titulo">%nombre%</span><span class="novedad_fecha">%fecha%</span><span class="short_desc">%descripcion_cut%</span></p></div>' +
                             '</div></div></ons-list-item>',
 
     vino_list_detail: '<div class="price-row"><div class="name">%nombre%</div><div class="price">%precio%</div></div>',
