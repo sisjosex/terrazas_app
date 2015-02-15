@@ -453,7 +453,7 @@ module.controller('FotoController', function($scope) {
 
         current_page = 'foto.html';
 
-        $('#foto_image').attr('src', 'http://lasterrazasdebecerril.es/img/fotos/thumbnails/' + current_foto.url);
+        $('#foto_image').attr('src', 'http://lasterrazasdebecerril.es/img/fotos/' + current_foto.url);
 
         /*gesturableImg = new ImgTouchCanvas({
             canvas: document.getElementById('foto_canvas'),

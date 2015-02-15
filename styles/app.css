@@ -194,9 +194,9 @@ input[type=checkbox] {
     bottom: 0;
     right: 0;
     background-size: 100% auto;
-    background-image: url('../img/offline.jpg');
+    background-image: url('../img/logo.png');
     background-color: #fff;
-    background-position: center center;
+    background-position: center center !important;
     background-repeat: no-repeat;
 }
 
