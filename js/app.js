@@ -322,28 +322,6 @@ actionCall = function(phone) {
     );
 };
 
-var scopeSplashController;
-module.controller('SplashController', function($scope) {
-    ons.ready(function() {
-
-        current_page = 'splash.html';
-
-        try {
-            StatusBar.hide();
-        }catch(error){}
-
-        scopeSplashController = $scope;
-
-        loadApplicationParams(function(){
-
-            applicationParams.slider = getArrayAsObjects(applicationParams.slider);
-
-            splash.pushPage('main.html');
-
-        });
-
-    });
-});
 
 var scopeLocalizacionController;
 var map;
@@ -387,34 +365,41 @@ var scopeHomeController;
 module.controller('HomeController', function($scope) {
     ons.ready(function() {
 
+        scopeHomeController = $scope;
+
         try {
             StatusBar.hide();
         }catch(error){}
 
-        scopeHomeController = $scope;
+        scopeSplashController = $scope;
 
-        current_page = 'main.html';
+        loadApplicationParams(function(){
 
-        $('#horario').html(applicationParams.restaurante.horario_atencion);
+            applicationParams.slider = getArrayAsObjects(applicationParams.slider);
 
-        $('#guest_paginator > li:nth-child(1)').addClass('selected');
+            current_page = 'main.html';
 
-        //navigator.splashscreen.hide();
-        try { navigator.splashscreen.hide(); } catch(error){}
+            $('#horario').html(applicationParams.restaurante.horario_atencion);
 
-        loadIntoTemplate('#home_images', applicationParams.slider, 'slider_images');
+            $('#guest_paginator > li:nth-child(1)').addClass('selected');
 
-        ons.compile($('#main_scroll')[0]);
+            loadIntoTemplate('#home_images', applicationParams.slider, 'slider_images');
 
-        initScroll('main_scroll');
+            ons.compile($('#main_scroll')[0]);
 
-        resizeCardCarousel();
+            initScroll('main_scroll');
 
-        setTimeout(function(){
+            resizeCardCarousel();
 
-            refreshHomeScroll();
+            setTimeout(function(){
 
-        }, 200);
+                refreshHomeScroll();
+
+            }, 200);
+
+            try { navigator.splashscreen.hide(); } catch(error){}
+
+        });
 
     });
 });
@@ -541,11 +526,11 @@ module.controller('MenuDiarioController', function($scope) {
         if(current_list.data.tipo_menu == 'diario') {
 
             if(current_list.data.primeros) {
-                content += '<h3>Primeros</h3><div class="description_listado">' + $(current_list.data.primeros).text() + '</div>';
+                content += '<h3>Primeros</h3><div class="description_listado">' + current_list.data.primeros + '</div>';
             }
 
             if(current_list.data.segundos) {
-                content += '<h3>Segundos</h3><div class="description_listado">' + current_list.data.primeros + '</div>';
+                content += '<h3>Segundos</h3><div class="description_listado">' + current_list.data.segundos + '</div>';
             }
 
             if(current_list.data.precio_descripcion) {

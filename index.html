@@ -58,12 +58,9 @@
     <ons-icon icon="ion-loading-c" spin="true"></ons-icon>
 </ons-modal>
 
-<ons-navigator animation="slide" var="splash">
-    <ons-page ng-controller="SplashController" class="splash">
-    </ons-page>
-</ons-navigator>
 
-<ons-template id="main.html" var="MainPage">
+
+<ons-navigator animation="slide" var="splash">
     <ons-page ng-controller="HomeController" class="">
         <!--<ons-toolbar class="toolbar big" style="position:relative;background: none;border:none;">
 
@@ -114,7 +111,7 @@
             </div>
         </div>
     </ons-page>
-</ons-template>
+</ons-navigator>
 
 <ons-template id="menudiario.html">
     <ons-page ng-controller="MenuDiarioController" var="carta" class="normal-page">
