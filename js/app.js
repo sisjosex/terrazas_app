@@ -1,6 +1,6 @@
 var module = ons.bootstrap();
 
-angular.module('MyApp', ['QuickList']);
+angular.module('MyApp', []);
 
 var calendar;
 
@@ -23,10 +23,9 @@ window.onresize = function(){
 
 function resizeCardCarousel() {
     thumb_width = window.innerWidth;
-    thumb_height = parseInt(514 / 640 * window.innerWidth);
+    thumb_height = parseInt(514 / 640 * window.innerWidth) - 100;
 
-    $('.hascarousel .carousel-detail').height(thumb_height);
-    $('.hascarousel .page__content').css('top', thumb_height);
+    $('#home_images').height(thumb_height);
 }
 
 function onError() {}
@@ -44,6 +43,11 @@ function goToCarta() {
     }, function(){}, {});
 }
 
+function openEmail(email) {
+
+    window.open('mailto:'+email+'?subject=Contacto&body=');
+}
+
 function goToLocalizacion() {
 
     splash.pushPage('localizacion.html', {});
@@ -55,9 +59,11 @@ function goToCartaDetalle(section) {
 
     loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_content');
 
-    ons.compile($('#carta_scroll')[0]);
+    scrolls['carta_scroll'].refresh();
 
-    initScroll('carta_scroll');
+    /*ons.compile($('#carta_scroll')[0]);
+
+    initScroll('carta_scroll');*/
 }
 
 function goToVinoDetalle(section) {
@@ -66,9 +72,16 @@ function goToVinoDetalle(section) {
 
     loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
 
-    ons.compile($('#carta_scroll')[0]);
+    scrolls['carta_scroll'].refresh();
 
-    initScroll('carta_scroll');
+    /*ons.compile($('#carta_scroll')[0]);
+
+    initScroll('carta_scroll');*/
+}
+
+function goToContacto() {
+
+    splash.pushPage('contacto.html', {});
 }
 
 function goToNovedadDetalle(index, event) {
@@ -97,6 +110,11 @@ function goToVinosCategoria(id) {
         }
 
     }, function(){}, {id: id});
+}
+
+function goToRedes() {
+
+    splash.pushPage('redes.html', {});
 }
 
 function goToGalerias() {
@@ -377,6 +395,8 @@ module.controller('HomeController', function($scope) {
 
         current_page = 'main.html';
 
+        $('#horario').html(applicationParams.restaurante.horario_atencion);
+
         $('#guest_paginator > li:nth-child(1)').addClass('selected');
 
         //navigator.splashscreen.hide();
@@ -432,6 +452,23 @@ module.controller('CartaController', function($scope) {
         ons.compile($('#carta_scroll')[0]);
 
         initScroll('carta_scroll');
+
+    });
+});
+
+var scopeContactoController;
+module.controller('ContactoController', function($scope) {
+    ons.ready(function() {
+
+        scopeContactoController = this;
+
+        current_page = 'contacto.html';
+
+        $scope.labels = getLabels();
+
+
+
+        initScroll('contacto_scroll');
 
     });
 });
@@ -508,7 +545,7 @@ module.controller('MenuDiarioController', function($scope) {
             }
 
             if(current_list.data.segundos) {
-                content += '<h3>Primeros</h3><div class="description_listado">' + current_list.data.primeros + '</div>';
+                content += '<h3>Segundos</h3><div class="description_listado">' + current_list.data.primeros + '</div>';
             }
 
             if(current_list.data.precio_descripcion) {
@@ -574,6 +611,19 @@ module.controller('PageController', function($scope) {
         $scope.labels = getLabels();
 
         loadIntoTemplate('#page_content', current_list.list, 'page_list_content');
+
+        $('#page_content a').each(function(){
+
+            var href = $(this).attr('href');
+            $(this).attr('href', 'javascript: void(0)');
+
+            $(this).on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(href, '_system');
+            });
+
+        });
 
         ons.compile($('#page_content')[0]);
 
@@ -785,7 +835,7 @@ function alert(message) {
     ons.notification.alert({
         message: message,
         // or messageHTML: '<div>Message in HTML</div>',
-        title: getLabel('alert'),
+        title: 'Mensaje',
         buttonLabel: 'OK',
         animation: 'default', // or 'none'
         // modifier: 'optional-modifier'
@@ -848,4 +898,50 @@ function updateContent (el, data) {
 
 function getLabels() {
     return labels[applicationLanguage];
+}
+
+function requestFocus(input, event) {
+    $(input).focus();
+}
+
+function sendContactForm(input, event) {
+
+    var nombre =$('#contacto_nombre').val();
+    var telefono =$('#contacto_telefono').val();
+    var email =$('#contacto_email').val();
+    var mensaje =$('#contacto_mensaje').val();
+
+    if(nombre == '') {
+        alert('Nombre es requerido');
+        return;
+    }
+
+    if(email == '') {
+        alert('Email es requerido');
+        return;
+    }
+
+    if(!/^[_a-z0-9-]+(.[_a-z0-9-]+)*@[a-z0-9-]+(.[a-z0-9-]+)*(.[a-z]{2,3})$/.exec(email)) {
+        alert('Email inválido');
+        return;
+    }
+
+    if(mensaje == '') {
+        alert('Mensaje es requerido');
+        return;
+    }
+
+    getJsonP(api_url + 'enviar_contacto', function(data){
+
+        alert(data.message);
+
+        if(data.status == 'success') {
+
+            $('#contacto_nombre').val('');
+            $('#contacto_telefono').val('');
+            $('#contacto_email').val('');
+            $('#contacto_mensaje').val('');
+        }
+
+    }, function(){}, {});
 }
