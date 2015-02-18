@@ -1548,7 +1548,11 @@ figure {
 }
 
 #redes_content *{
-    font-size:15px;
+    font-size:15px !important;
+}
+
+#redes_content .title{
+    font-size:28px !important;
 }
 
 #horario {

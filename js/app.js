@@ -585,6 +585,19 @@ module.controller('VinosController', function($scope) {
     });
 });
 
+var scopeRedesController;
+module.controller('RedesController', function($scope) {
+    ons.ready(function() {
+
+        scopeRedesController = this;
+
+        current_page = 'redes.html';
+
+        initScroll('redes_scroll');
+
+    });
+});
+
 var scopeGaleriasController;
 module.controller('GaleriasController', function($scope) {
     ons.ready(function() {
