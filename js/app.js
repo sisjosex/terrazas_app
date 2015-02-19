@@ -394,6 +394,7 @@ module.controller('HomeController', function($scope) {
             initScroll('main_scroll');
 
             resizeCardCarousel();
+            refreshHomeScroll();
 
             setTimeout(function(){
 
@@ -401,7 +402,7 @@ module.controller('HomeController', function($scope) {
 
                 try { navigator.splashscreen.hide(); } catch(error){}
 
-            }, 200);
+            }, 1000);
 
         });
 
