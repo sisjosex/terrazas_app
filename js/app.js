@@ -23,9 +23,11 @@ window.onresize = function(){
 
 function resizeCardCarousel() {
     thumb_width = window.innerWidth;
-    thumb_height = parseInt(514 / 640 * window.innerWidth) - 100;
+    thumb_height = parseInt(514 / 640 * window.innerWidth) - 70;
 
     $('#home_images').height(thumb_height);
+
+    refreshHomeScroll();
 }
 
 function onError() {}
@@ -71,6 +73,8 @@ function goToVinoDetalle(section) {
     $('#carta_list').html('');
 
     loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
+
+    ons.compile($('#carta_scroll')[0]);
 
     scrolls['carta_scroll'].refresh();
 
@@ -395,9 +399,9 @@ module.controller('HomeController', function($scope) {
 
                 refreshHomeScroll();
 
-            }, 200);
+                try { navigator.splashscreen.hide(); } catch(error){}
 
-            try { navigator.splashscreen.hide(); } catch(error){}
+            }, 200);
 
         });
 
@@ -662,6 +666,19 @@ module.controller('NoticiaController', function($scope) {
         $('#noticia_image').attr('src', 'http://lasterrazasdebecerril.es/img/novedades/' + current_noticia.imagen);
         $('#noticia_title').html(current_noticia.nombre);
         $('#noticia_description').html(current_noticia.descripcion);
+
+        $('#noticia_description a').each(function(){
+
+            var href = $(this).attr('href');
+            $(this).attr('href', 'javascript: void(0)');
+
+            $(this).on('click', function(e){
+                e.preventDefault();
+                e.stopPropagation();
+                window.open(href, '_system');
+            });
+
+        });
 
         initScroll('noticia_scroll');
 

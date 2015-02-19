@@ -886,7 +886,7 @@ label.checkbox {
 }
 
 .carousel-detail {
-    height:255px;
+    height:auto;
 }
 
 .rosa {
@@ -995,13 +995,15 @@ label.checkbox {
 .llamanos {
     background: url('../img/btn_llamanos.png') 0 0 no-repeat transparent;
     background-size: 100% auto;
-    height:36px;
+    height: 46px;
+    width: 140px;
 }
 
 .localizacion {
     background: url('../img/btn_localizacion.png') 0 0 no-repeat transparent;
     background-size: 100% auto;
-    height:36px;
+    height: 46px;
+    width: 140px;
 }
 
 .la_carta {
@@ -1556,7 +1558,7 @@ figure {
 }
 
 #horario {
-    font-size:18px;
+    font-size:14px;
 }
 
 
@@ -1592,6 +1594,11 @@ figure {
         height: 87px;
         margin: 1px;
     }
+
+    .llamanos, .localizacion {
+        height: 48px;
+        width: 160px;
+    }
 }
 
 @media screen and (min-width: 414px) {
@@ -1599,6 +1606,11 @@ figure {
         min-width: 96px;
         height: 96px;
         margin: 1px;
+    }
+
+    .llamanos, .localizacion {
+        height: 58px;
+        width: 170px;
     }
 }
 
