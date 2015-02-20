@@ -333,7 +333,7 @@ module.controller('LocalizacionController', function($scope){
 
     ons.ready(function(){
 
-        /*var latLong = new google.maps.LatLng(40.71535,-3.98943);
+        var latLong = new google.maps.LatLng(40.71535,-3.98943);
 
         map = new google.maps.Map(document.getElementById('map'), {
             center: latLong,
@@ -359,7 +359,7 @@ module.controller('LocalizacionController', function($scope){
 
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
-        });*/
+        });
 
     });
 });
