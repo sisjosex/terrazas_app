@@ -1587,6 +1587,10 @@ figure {
     margin-top: 15px;
 }
 
+.page__status-bar-fill .page__content {
+    padding-top:0;
+}
+
 
 @media screen and (min-width: 375px) {
     .cuadrado {
