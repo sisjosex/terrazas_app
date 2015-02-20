@@ -961,3 +961,11 @@ function sendContactForm(input, event) {
 
     }, function(){}, {});
 }
+
+$(document).on('click', 'a[target="_blank"]', function(ev) {
+    var url;
+
+    ev.preventDefault();
+    url = $(this).attr('href');
+    window.open(url, '_system');
+});
