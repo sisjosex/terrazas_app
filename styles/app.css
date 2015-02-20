@@ -1587,6 +1587,13 @@ figure {
     margin-top: 15px;
 }
 
+#grupos_descripcion {
+    font-size: 18px;
+    text-align: left;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
 .page__status-bar-fill .page__content {
     padding-top:0;
 }
