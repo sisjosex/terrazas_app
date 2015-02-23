@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c450b604-d42a-46ef-9d56-9c45517ac89d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/iscroll/iscroll.js" afterPath="$PROJECT_DIR$/lib/iscroll/iscroll.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="terrazas_app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,13 +62,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5270121" vertical-offset="818" max-vertical-offset="16336">
-              <caret line="81" column="6" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="14325" max-vertical-offset="16336">
+              <caret line="923" column="141" selection-start-line="923" selection-start-column="141" selection-end-line="923" selection-end-column="141" />
               <folding>
-                <marker date="1424655679338" expanded="true" signature="6209:6236" placeholder="..." />
+                <marker date="1424688692631" expanded="true" signature="6209:6236" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -81,6 +82,16 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="iscroll.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/iscroll/iscroll.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.44393063" vertical-offset="160" max-vertical-offset="12192">
+              <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,7 +119,6 @@
         <option value="$PROJECT_DIR$/.gitgnore" />
         <option value="$PROJECT_DIR$/js/language.js" />
         <option value="$PROJECT_DIR$/lib/img-touch-canvas.js" />
-        <option value="$PROJECT_DIR$/lib/iscroll/iscroll.js" />
         <option value="$PROJECT_DIR$/js/constants.js" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/lib/onsen/css/onsenui.css" />
@@ -116,6 +126,7 @@
         <option value="$PROJECT_DIR$/styles/app.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/js/app.js" />
+        <option value="$PROJECT_DIR$/lib/iscroll/iscroll.js" />
       </list>
     </option>
   </component>
@@ -388,7 +399,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13696">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1424655679338" expanded="true" signature="6209:6236" placeholder="..." />
+            <marker date="1424688692631" expanded="true" signature="6209:6236" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -478,7 +489,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="432" max-vertical-offset="11072">
           <caret line="27" column="19" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="19" />
           <folding>
-            <marker date="1424655679338" expanded="true" signature="6209:6236" placeholder="..." />
+            <marker date="1424688692631" expanded="true" signature="6209:6236" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -560,7 +571,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="7285" max-vertical-offset="8192">
           <caret line="495" column="6" selection-start-line="495" selection-start-column="6" selection-end-line="495" selection-end-column="6" />
           <folding>
-            <marker date="1424655679338" expanded="true" signature="6209:6236" placeholder="..." />
+            <marker date="1424688692631" expanded="true" signature="6209:6236" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -650,7 +661,7 @@
         <state vertical-scroll-proportion="0.0" vertical-offset="7285" max-vertical-offset="8192">
           <caret line="495" column="6" selection-start-line="495" selection-start-column="6" selection-end-line="495" selection-end-column="6" />
           <folding>
-            <marker date="1424655679338" expanded="true" signature="6209:6236" placeholder="..." />
+            <marker date="1424688692631" expanded="true" signature="6209:6236" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -752,14 +763,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/iscroll/iscroll.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.12785389" vertical-offset="3504" max-vertical-offset="12192">
-          <caret line="226" column="44" selection-start-line="226" selection-start-column="44" selection-end-line="226" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/onsen/css/onsenui.css">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.38695163" vertical-offset="648" max-vertical-offset="15280">
@@ -828,11 +831,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5270121" vertical-offset="818" max-vertical-offset="16336">
-          <caret line="81" column="6" selection-start-line="81" selection-start-column="6" selection-end-line="81" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="14325" max-vertical-offset="16336">
+          <caret line="923" column="141" selection-start-line="923" selection-start-column="141" selection-end-line="923" selection-end-column="141" />
           <folding>
-            <marker date="1424655679338" expanded="true" signature="6209:6236" placeholder="..." />
+            <marker date="1424688692631" expanded="true" signature="6209:6236" placeholder="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/iscroll/iscroll.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44393063" vertical-offset="160" max-vertical-offset="12192">
+          <caret line="34" column="34" selection-start-line="34" selection-start-column="34" selection-end-line="34" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
