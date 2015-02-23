@@ -74,12 +74,12 @@ function goToVinoDetalle(section) {
 
     loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
 
-    ons.compile($('#carta_list')[0]);
+    //ons.compile($('#carta_list')[0]);
 
-    initScroll('carta_scroll');
+    //initScroll('carta_scroll');
 
-    /*scrolls['carta_scroll'].refresh();
-    ons.compile($('#carta_scroll')[0]);*/
+    scrolls['carta_scroll'].refresh();
+    /*ons.compile($('#carta_scroll')[0]);*/
 }
 
 function goToContacto() {
