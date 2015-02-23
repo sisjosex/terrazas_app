@@ -897,10 +897,6 @@ label.checkbox {
     height:45px !important;
 }
 
-.toolbar.big {
-    height:257px;
-}
-
 .guestpage .page__content {
     top: 46px;
 }
@@ -1592,10 +1588,15 @@ figure {
     text-align: left;
     margin-left: 5px;
     margin-right: 5px;
+    line-height: 28px;
 }
 
 .page__status-bar-fill .page__content {
     padding-top:0;
+}
+
+.toolbar.navigation-bar.noshadow {
+    box-shadow: none;
 }
 
 

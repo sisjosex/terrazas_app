@@ -74,13 +74,12 @@ function goToVinoDetalle(section) {
 
     loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
 
-    ons.compile($('#carta_scroll')[0]);
+    ons.compile($('#carta_list')[0]);
 
-    scrolls['carta_scroll'].refresh();
+    initScroll('carta_scroll');
 
-    /*ons.compile($('#carta_scroll')[0]);
-
-    initScroll('carta_scroll');*/
+    /*scrolls['carta_scroll'].refresh();
+    ons.compile($('#carta_scroll')[0]);*/
 }
 
 function goToContacto() {
@@ -366,6 +365,7 @@ module.controller('LocalizacionController', function($scope){
 
 
 var scopeHomeController;
+var height;
 module.controller('HomeController', function($scope) {
     ons.ready(function() {
 
@@ -377,34 +377,47 @@ module.controller('HomeController', function($scope) {
 
         scopeSplashController = $scope;
 
-        loadApplicationParams(function(){
+        setTimeout(function() {
 
-            applicationParams.slider = getArrayAsObjects(applicationParams.slider);
+            height = $(window).height() - ( $('#main_content').height() + 60 );
+            $('#home_images').height( height );
+            $('#homePage .page__content').css('top', height+'px');
 
-            current_page = 'main.html';
+            loadApplicationParams(function(){
 
-            $('#horario').html(applicationParams.restaurante.horario_atencion);
+                applicationParams.slider = getArrayAsObjects(applicationParams.slider);
 
-            $('#guest_paginator > li:nth-child(1)').addClass('selected');
+                current_page = 'main.html';
 
-            loadIntoTemplate('#home_images', applicationParams.slider, 'slider_images');
+                $('#horario').html(applicationParams.restaurante.horario_atencion);
 
-            ons.compile($('#main_scroll')[0]);
+                $('#guest_paginator > li:nth-child(1)').addClass('selected');
 
-            initScroll('main_scroll');
+                loadIntoTemplate('#home_images', applicationParams.slider, 'slider_images');
 
-            resizeCardCarousel();
-            refreshHomeScroll();
+                ons.compile($('#home_images')[0]);
 
-            setTimeout(function(){
+                ons.compile($('#main_scroll')[0]);
+
+                initScroll('main_scroll');
 
                 refreshHomeScroll();
 
-                try { navigator.splashscreen.hide(); } catch(error){}
+                setTimeout(function(){
 
-            }, 1000);
+                    refreshHomeScroll();
 
-        });
+                    height = $(window).height() - ( $('#main_content').height() + $('#horario').height() - 6 - 15 );
+                    $('#home_images').height( height );
+                    $('#homePage .page__content').css('top', height+'px');
+
+                    try { navigator.splashscreen.hide(); } catch(error){}
+
+                }, 1000);
+
+            });
+
+        }, 100);
 
     });
 });
@@ -509,6 +522,21 @@ module.controller('FotoController', function($scope) {
                 modal.hide();
             }
         });*/
+
+    });
+});
+
+var scopeExternalController;
+module.controller('ExternalController', function($scope) {
+    ons.ready(function() {
+
+        scopeExternalController = this;
+
+        current_page = 'external.html';
+
+        console.log(currentLink);
+
+        $('#external_container').attr('src', currentLink);
 
     });
 });
@@ -621,9 +649,7 @@ module.controller('PageController', function($scope) {
             $(this).attr('href', 'javascript: void(0)');
 
             $(this).on('click', function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                window.open(href, '_system');
+                openExternalLink(href, e);
             });
 
         });
@@ -674,9 +700,7 @@ module.controller('NoticiaController', function($scope) {
             $(this).attr('href', 'javascript: void(0)');
 
             $(this).on('click', function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                window.open(href, '_system');
+                openExternalLink(href, e);
             });
 
         });
@@ -962,10 +986,31 @@ function sendContactForm(input, event) {
     }, function(){}, {});
 }
 
-$(document).on('click', 'a[target="_blank"]', function(ev) {
+$(document).unbind('click').on('click', 'a[target="_blank"]', function(ev) {
     var url;
 
-    ev.preventDefault();
     url = $(this).attr('href');
-    window.open(url, '_system');
+
+    openExternalLink(url, ev);
 });
+
+var currentLink;
+var isExternalShowing = false;
+function openExternalLink(url, e) {
+
+    if(!isExternalShowing) {
+
+        isExternalShowing = true;
+
+        currentLink = url;
+
+        console.log('external');
+
+        splash.pushPage('external.html', {});
+
+        if (e != undefined) {
+            e.stopPropagation();
+            e.preventDefault();
+        }
+    }
+}

@@ -61,12 +61,22 @@
 
 
 <ons-navigator animation="slide" var="splash">
-    <ons-page ng-controller="HomeController" class="">
-        <!--<ons-toolbar class="toolbar big" style="position:relative;background: none;border:none;">
+    <ons-page ng-controller="HomeController" id="homePage" class="">
 
+        <ons-toolbar class="toolbar noshadow" style="position:relative;background: none;border:none;height: auto;">
 
+            <div class="center" style="height:auto;position:relative;">
+                <div style="position:relative;">
+                    <ons-carousel class="carousel-detail" id="home_images" var="homeSlider"
+                                  style="position:relative;"
+                                  overscrollable="" auto-scroll=""></ons-carousel>
 
-        </ons-toolbar>-->
+                    <div class="button nobutton slider-left" onclick="prevSlide()"></div>
+                    <div class="button nobutton slider-right" onclick="nextSlide()"></div>
+                </div>
+            </div>
+
+        </ons-toolbar>
 
         <!--
         <div class="center hascarousel">
@@ -76,37 +86,30 @@
 
             <div id="main_list" class="scroll-content">
 
-                <div style="position:relative;">
-                    <ons-carousel class="carousel-detail" id="home_images" var="homeSlider"
-                                  style="position:relative;"
-                                  overscrollable="" auto-scroll=""></ons-carousel>
+                <div id="main_content">
+                    <div class="horizontal" style="margin-top: 15px;margin-bottom: 10px;">
+                        <div class="button nobutton llamanos" onclick="actionCall('918538002')"></div>
+                        <div class="button nobutton localizacion" onclick="goToLocalizacion()"></div>
+                    </div>
 
-                    <div class="button nobutton slider-left" onclick="prevSlide()"></div>
-                    <div class="button nobutton slider-right" onclick="nextSlide()"></div>
-                </div>
+                    <div class="horizontal">
+                        <div class="button nobutton cuadrado la_carta" onclick="goToCarta()"></div>
+                        <div class="button nobutton cuadrado menu" onclick="goToMenuDiario()"></div>
+                        <div class="button nobutton cuadrado grupos"
+                             onclick="goToGruposCategoria('menu_para_grupos')"></div>
+                        <div class="button nobutton cuadrado nosotros" onclick="getNosotros()"></div>
+                    </div>
 
-                <div class="horizontal" style="margin-top: 15px;margin-bottom: 10px;">
-                    <div class="button nobutton llamanos" onclick="actionCall('918538002')"></div>
-                    <div class="button nobutton localizacion" onclick="goToLocalizacion()"></div>
-                </div>
+                    <div class="horizontal">
+                        <div class="button nobutton cuadrado ambientes" onclick="goToAmbientes()"></div>
+                        <div class="button nobutton cuadrado alertas" onclick="goToAlertas()"></div>
+                        <div class="button nobutton cuadrado galeria" onclick="goToGalerias()"></div>
+                        <div class="button nobutton cuadrado contacto" onclick="goToRedes()"></div>
+                    </div>
 
-                <div class="horizontal">
-                    <div class="button nobutton cuadrado la_carta" onclick="goToCarta()"></div>
-                    <div class="button nobutton cuadrado menu" onclick="goToMenuDiario()"></div>
-                    <div class="button nobutton cuadrado grupos"
-                         onclick="goToGruposCategoria('menu_para_grupos')"></div>
-                    <div class="button nobutton cuadrado nosotros" onclick="getNosotros()"></div>
-                </div>
+                    <div id="horario" class="horizontal">
 
-                <div class="horizontal">
-                    <div class="button nobutton cuadrado ambientes" onclick="goToAmbientes()"></div>
-                    <div class="button nobutton cuadrado alertas" onclick="goToAlertas()"></div>
-                    <div class="button nobutton cuadrado galeria" onclick="goToGalerias()"></div>
-                    <div class="button nobutton cuadrado contacto" onclick="goToRedes()"></div>
-                </div>
-
-                <div id="horario" class="horizontal">
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -196,28 +199,30 @@
 
         <div id="carta_scroll" class="scrollable">
             <div class="scroll-content">
-                <div class="horizontal">
-                    <div class="title">
-                        {{labels.a_la_carta}}
-                    </div>
-                </div>
-
                 <div>
                     <div class="horizontal">
-                        <div class="button nobutton tres btn_entrantes" onclick="goToCartaDetalle('entrante')"></div>
-                        <div class="button nobutton tres btn_primeros" onclick="goToCartaDetalle('primero')"></div>
-                        <div class="button nobutton tres btn_pescados" onclick="goToCartaDetalle('pescado')"></div>
+                        <div class="title">
+                            {{labels.a_la_carta}}
+                        </div>
                     </div>
-                    <div class="horizontal">
-                        <div class="button nobutton tres btn_carnes" onclick="goToCartaDetalle('asado_carne')"></div>
-                        <div class="button nobutton tres btn_para_llevar"
-                             onclick="goToCartaDetalle('comida_para_llevar')"></div>
-                        <div class="button nobutton tres btn_bodega"
-                             onclick="goToVinoDetalle('nuestros_vinos')"></div>
-                    </div>
-                </div>
 
-                <div id="carta_list" class="scrollfix">
+                    <div>
+                        <div class="horizontal">
+                            <div class="button nobutton tres btn_entrantes" onclick="goToCartaDetalle('entrante')"></div>
+                            <div class="button nobutton tres btn_primeros" onclick="goToCartaDetalle('primero')"></div>
+                            <div class="button nobutton tres btn_pescados" onclick="goToCartaDetalle('pescado')"></div>
+                        </div>
+                        <div class="horizontal">
+                            <div class="button nobutton tres btn_carnes" onclick="goToCartaDetalle('asado_carne')"></div>
+                            <div class="button nobutton tres btn_para_llevar"
+                                 onclick="goToCartaDetalle('comida_para_llevar')"></div>
+                            <div class="button nobutton tres btn_bodega"
+                                 onclick="goToVinoDetalle('nuestros_vinos')"></div>
+                        </div>
+                    </div>
+
+                    <div id="carta_list" class="scrollfix">
+                    </div>
                 </div>
             </div>
         </div>
@@ -371,15 +376,15 @@
                     <div class="title" style="font-size:28px;">Información y Contacto</div>
 
                     <div class="contact-row" onclick="goToLocalizacion()"><div class="name">Paseo de San Sebastián 3. Becerril de la Sierra</div><div class="icon map"></div></div>
-                    <div class="contact-row"><div class="name"><a href="http://www.lasterrazasdebecerril.es" onclick="window.open(this.href, '_system')" style="text-decoration: none;">www.lasterrazasdebecerril.es</a></div><div class="icon web" onclick="window.open('http://www.lasterrazasdebecerril.es', '_system')"></div></div>
+                    <div class="contact-row"><div class="name"><a href="http://www.lasterrazasdebecerril.es" onclick="openExternalLink(this.href, event)" style="text-decoration: none;">www.lasterrazasdebecerril.es</a></div><div class="icon web" onclick="openExternalLink('http://www.lasterrazasdebecerril.es', event)"></div></div>
                     <div class="contact-row" onclick="openEmail('contacto@lasterrazasdebecerril.es')"><div class="name">contacto@lasterrazasdebecerril.es</div><div class="icon mail"></div></div>
                     <div class="contact-row" onclick="actionCall('918538002')"><div class="name">Reservas, sólamente vía teléfono 91 853 8002</div><div class="icon phone"></div></div>
                     <div class="contact-row" onclick="goToContacto()"><div class="name">Formulario de contacto</div><div class="icon form"></div></div>
-                    <div class="contact-row" onclick="window.open('http://blog.lasterrazasdebecerril.es', '_system')"><div class="name">Nuestro Blog</div><div class="icon blog"></div></div>
+                    <div class="contact-row" onclick="openExternalLink('http://blog.lasterrazasdebecerril.es', event)"><div class="name">Nuestro Blog</div><div class="icon blog"></div></div>
                     <div class="contact-row center" style="padding-top:18px;"><div class="name">Síguenos en nuestras redes sociales</div></div>
                     <div class="horizontal center">
-                        <div class="icon facebook" onclick="window.open('https://www.facebook.com/restaurante.lasterrazasdebecerril', '_system')"></div>
-                        <div class="icon twitter" onclick="window.open('https://twitter.com/LasTerrazasRest/', '_system')"></div>
+                        <div class="icon facebook" onclick="openExternalLink('https://www.facebook.com/restaurante.lasterrazasdebecerril', event)"></div>
+                        <div class="icon twitter" onclick="openExternalLink('https://twitter.com/LasTerrazasRest/', event)"></div>
                     </div>
                 </div>
             </div>
@@ -474,6 +479,19 @@
             </div>
         </div>
 
+    </ons-page>
+</ons-template>
+
+<ons-template id="external.html">
+    <ons-page ng-controller="ExternalController" var="grupo" class="normal-page">
+        <ons-toolbar class="toolbar">
+            <div class="center header-title">
+                <div class="backButton" onclick="splash.popPage('external.html');isExternalShowing = false;"></div>
+                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+            </div>
+        </ons-toolbar>
+
+        <iframe id="external_container" style="width: 100%;height:100%;" width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
     </ons-page>
 </ons-template>
 
