@@ -129,12 +129,14 @@ function readText() {
     return false;
 }
 
-window.fadeIn = function(obj) {
+window.fadeIn = function(obj, index) {
 
     $(obj).parent().css('background-image', "url('" + $(obj).attr('src') + "')");
     $(obj).parent().css('background-size', "auto 100%");
 
     $(obj).parent().find('*').remove();
+
+    imageLoaded(index);
 };
 
 window.onfailImage = function(element) {

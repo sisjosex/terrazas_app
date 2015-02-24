@@ -30,8 +30,9 @@ var templates = {
     vino_list_detail: '<div class="price-row"><div class="name">%nombre%</div><div class="price">%precio%</div></div>',
 
     slider_images: '' +
-        '<ons-carousel-item class="item-bg detail session-item">'+
-            '<img onload="fadeIn(this)" src="%list_image%" />'+
+        '<ons-carousel-item class="item-bg detail session-item loading">'+
+            '<ons-icon icon="ion-loading-c" spin="true" class="ons-icon ons-icon--ion ion-loading-c fa-lg"></ons-icon>'+
+            '<img onload="fadeIn(this, %index%)" src="%list_image%" />'+
         '</ons-carousel-item>',
 
     guest_paginator: '<li class="carousel-page %selected%"></li>',

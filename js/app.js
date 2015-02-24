@@ -30,6 +30,23 @@ function resizeCardCarousel() {
     refreshHomeScroll();
 }
 
+function imageLoaded(index) {
+    if(index == 0) {
+        setInterval(function(){
+
+            if(homeSlider.getActiveCarouselItemIndex() < homeSlider._getCarouselItemCount() - 1) {
+
+                homeSlider.next();
+
+            } else {
+
+                homeSlider.setActiveCarouselItemIndex(0);
+            }
+
+        }, 5000);
+    }
+}
+
 function onError() {}
 
 var current_list = [];
@@ -819,7 +836,7 @@ function getJsonP(url, callback_success, callback_error, data) {
         url: url,
         data: data,
         dataType: 'JSONp',
-        timeout: 20000,
+        timeout: 30000,
         async:true,
         success: function(data) {
 
@@ -853,7 +870,7 @@ function getJsonPBackground(url, callback_success, callback_error, data) {
         url: url,
         data: data,
         dataType: 'JSONp',
-        timeout: 20000,
+        timeout: 30000,
         async:true,
         success: function(data) {
 

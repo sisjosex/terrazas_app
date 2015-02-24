@@ -194,7 +194,6 @@ input[type=checkbox] {
     bottom: 0;
     right: 0;
     background-size: 100% auto;
-    background-image: url('../img/logo.png');
     background-color: #fff;
     background-position: center center !important;
     background-repeat: no-repeat;
@@ -1597,6 +1596,15 @@ figure {
 
 .toolbar.navigation-bar.noshadow {
     box-shadow: none;
+}
+
+.loading {
+    /*background: url('../img/loading-indicator.gif') center center no-repeat transparent;*/
+}
+
+.loading .ons-icon {
+    position: absolute;
+    top: 50%;
 }
 
 
