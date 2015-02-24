@@ -1015,7 +1015,7 @@ var currentLink;
 var isExternalShowing = false;
 function openExternalLink(url, e) {
 
-    if(!isExternalShowing) {
+    /*if(!isExternalShowing) {
 
         isExternalShowing = true;
 
@@ -1035,9 +1035,25 @@ function openExternalLink(url, e) {
             e.stopPropagation();
             e.preventDefault();
         }
+    }*/
+
+    try {
+
+        window.plugins.ChildBrowser.showWebPage(url,
+            { showLocationBar: true });
+
+    } catch(error) {
+
+        splash.pushPage('external.html', {});
+    }
+
+    if (e != undefined) {
+        e.stopPropagation();
+        e.preventDefault();
     }
 }
 
+/*
 window.plugins.ChildBrowser.onClose = function () {
     isExternalShowing = false;
-};
+};*/
