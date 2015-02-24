@@ -1173,8 +1173,8 @@ label.checkbox {
 .title {
     font-family: 'a_song_for_jennifer_bold';
     font-size: 30px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
     color:#744d12;
 }
 
@@ -1270,6 +1270,8 @@ label.checkbox {
     font-family: 'tillium-regular';
     font-size: 18px;
     font-weight: lighter;
+    margin: 0;
+    margin-bottom: 5px;
 }
 
 .scrollfix {

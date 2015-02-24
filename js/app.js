@@ -1021,9 +1021,15 @@ function openExternalLink(url, e) {
 
         currentLink = url;
 
-        console.log('external');
+        try {
 
-        splash.pushPage('external.html', {});
+            window.plugins.ChildBrowser.showWebPage(url,
+                { showLocationBar: true });
+
+        } catch(error) {
+
+            splash.pushPage('external.html', {});
+        }
 
         if (e != undefined) {
             e.stopPropagation();
