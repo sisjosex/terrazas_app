@@ -1037,3 +1037,7 @@ function openExternalLink(url, e) {
         }
     }
 }
+
+window.plugins.ChildBrowser.onClose = function () {
+    isExternalShowing = false;
+};
