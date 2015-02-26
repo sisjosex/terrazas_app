@@ -742,6 +742,9 @@ module.controller('NoticiaController', function($scope) {
             $(this).attr('target', '_self');
             $(this).unbind('click');
             $(this).attr('onclick', 'openExternalLink(this.href, event)');
+            $(this).addClass('button');
+            $(this).addClass('nobutton');
+            $(this).addClass('linkbutton');
             /*$(this).on('click', function(e){
                 openExternalLink(href, e);
             });*/

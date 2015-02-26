@@ -1637,6 +1637,10 @@ figure {
     margin-top:15px;
 }
 
+.linkbutton {
+    display:inline;
+    text-decoration: underline;
+}
 
 @media screen and (min-width: 375px) {
     .cuadrado {
