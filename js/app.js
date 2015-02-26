@@ -741,13 +741,13 @@ module.controller('NoticiaController', function($scope) {
             $(this).attr('href', 'javascript: void(0)');
             $(this).attr('target', '_self');
             $(this).unbind('click');
-            $(this).attr('onclick', 'openExternalLink(this.href, event)');
+            //$(this).attr('onclick', 'openExternalLink(this.href, event)');
             $(this).addClass('button');
             $(this).addClass('nobutton');
             $(this).addClass('linkbutton');
-            /*$(this).on('click', function(e){
+            $(this).on('click', function(e){
                 openExternalLink(href, e);
-            });*/
+            });
 
         });
 
