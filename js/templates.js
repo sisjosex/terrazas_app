@@ -27,6 +27,10 @@ var templates = {
                             '<div class="list_title"><p><img align="left" src="http://lasterrazasdebecerril.es/img/novedades/thumbnails/%imagen%" onload="refreshNovedadesScroll()"/><span class="novedad_titulo">%nombre%</span><span class="novedad_fecha">%fecha%</span><span class="short_desc">%descripcion_cut%</span></p></div>' +
                             '</div></div></ons-list-item>',
 
+    btn_subir: '<div class="subir_container"><div class="button nobutton subir" onclick="subir(event)"></div></div>',
+
+    btn_pdf: '<div class="pdf_container"><div class="button nobutton pdf" onclick="openPdf(\'http://lasterrazasdebecerril.es/noticias/forceDowload/%pdf%\')"></div></div>',
+
     vino_list_detail: '<div class="price-row"><div class="name">%nombre%</div><div class="price">%precio%</div></div>',
 
     slider_images: '' +

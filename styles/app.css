@@ -603,7 +603,7 @@ span.block {
     right: 0em;
     top: 0.1em;
     color: #fff;
-    background: url('../img/info.png') 0 0 no-repeat transparent;
+    background: url('../img/btn_phone.png') 0 0 no-repeat transparent;
     width: 1.4em;
     background-repeat: no-repeat;
     background-size: auto 80%;
@@ -996,6 +996,20 @@ label.checkbox {
 
 .localizacion {
     background: url('../img/btn_localizacion.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+    height: 46px;
+    width: 140px;
+}
+
+.subir {
+    background: url('../img/btn_subir.png') 0 0 no-repeat transparent;
+    background-size: 100% auto;
+    height: 46px;
+    width: 140px;
+}
+
+.pdf {
+    background: url('../img/btn_pdf.png') 0 0 no-repeat transparent;
     background-size: 100% auto;
     height: 46px;
     width: 140px;
@@ -1607,6 +1621,16 @@ figure {
 .loading .ons-icon {
     position: absolute;
     top: 50%;
+}
+
+.subir_container {
+    width:100%;
+    text-align: center;
+}
+
+.pdf_container {
+    width:100%;
+    text-align: center;
 }
 
 

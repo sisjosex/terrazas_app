@@ -91,6 +91,8 @@ function goToVinoDetalle(section) {
 
     loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
 
+    $('#carta_list').append(templates.btn_subir);
+
     //ons.compile($('#carta_list')[0]);
 
     //initScroll('carta_scroll');
@@ -342,6 +344,10 @@ actionCall = function(phone) {
     );
 };
 
+function infoAction() {
+    actionCall('918538002');
+}
+
 
 var scopeLocalizacionController;
 var map;
@@ -455,6 +461,20 @@ function compare(a,b) {
     return 0;
 }
 
+
+function subir() {
+    if(current_page == 'novedades.html'){
+        initScroll('novedades_scroll');
+    } else if(current_page == 'page.html'){
+        initScroll('page_scroll');
+    } else if(current_page == 'grupo.html'){
+        initScroll('grupo_scroll');
+    } else if(current_page == 'carta.html'){
+        initScroll('carta_scroll');
+    } else if(current_page == 'carta.html'){
+        initScroll('carta_scroll');
+    }
+}
 
 
 var scopeCartaController;
@@ -660,6 +680,8 @@ module.controller('PageController', function($scope) {
 
         loadIntoTemplate('#page_content', current_list.list, 'page_list_content');
 
+        $('#page_content').append(templates.btn_subir);
+
         $('#page_content a').each(function(){
 
             var href = $(this).attr('href');
@@ -690,6 +712,8 @@ module.controller('NovedadesController', function($scope) {
 
         loadIntoTemplate('#novedades_content', current_list.list, 'novedades_list_content');
 
+        $('#novedades_content').append(templates.btn_subir);
+
         ons.compile($('#novedades_content')[0]);
 
         initScroll('novedades_scroll');
@@ -715,12 +739,19 @@ module.controller('NoticiaController', function($scope) {
 
             var href = $(this).attr('href');
             $(this).attr('href', 'javascript: void(0)');
+            $(this).attr('onclick', 'openExternalLink(this.href, event)');
 
-            $(this).on('click', function(e){
+            /*$(this).on('click', function(e){
                 openExternalLink(href, e);
-            });
+            });*/
 
         });
+
+        if(current_noticia.pdf != null && current_noticia.pdf != undefined && current_noticia.pdf != '' && current_noticia.pdf != 'null') {
+            $('#noticia_description').append(templates.btn_pdf.replaceAll('%pdf%', current_noticia.pdf));
+        }
+
+        if(current_noticia)
 
         initScroll('noticia_scroll');
 
@@ -766,6 +797,8 @@ module.controller('GrupoController', function($scope) {
         $('#grupos_descripcion').html($('#grupos_descripcion').text());
 
         loadIntoTemplate('#grupo_list_content', current_list.list, 'grupo_list_content');
+
+        $('#grupo_list_content').append(templates.btn_subir);
 
         $scope.labels = getLabels();
 
@@ -1000,7 +1033,12 @@ function sendContactForm(input, event) {
             $('#contacto_mensaje').val('');
         }
 
-    }, function(){}, {});
+    }, function(){}, {
+        name: $('#contacto_nombre').val(),
+        phone: $('#contacto_telefono').val(),
+        email: $('#contacto_email').val(),
+        mensaje: $('#contacto_mensaje').val()
+    });
 }
 
 $(document).unbind('click').on('click', 'a[target="_blank"]', function(ev) {
@@ -1050,6 +1088,19 @@ function openExternalLink(url, e) {
     if (e != undefined) {
         e.stopPropagation();
         e.preventDefault();
+    }
+}
+
+function openPdf(url) {
+    try {
+
+        window.plugins.ChildBrowser.showWebPage(url,
+            { showLocationBar: true });
+
+    } catch(error) {
+
+        window.open(url, '_system');
+        //splash.pushPage('external.html', {});
     }
 }
 

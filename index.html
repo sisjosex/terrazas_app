@@ -121,7 +121,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('menudiario.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -145,7 +145,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('contacto.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -193,7 +193,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('carta.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -234,7 +234,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('grupo.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -260,7 +260,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('noticia.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -283,7 +283,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('grupo.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -301,7 +301,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('novedades.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -319,7 +319,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('localizacion.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -363,7 +363,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('redes.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -375,13 +375,13 @@
 
                     <div class="title" style="font-size:28px;">Información y Contacto</div>
 
-                    <div class="contact-row" onclick="goToLocalizacion()"><div class="name">Paseo de San Sebastián 3. Becerril de la Sierra</div><div class="icon map"></div></div>
-                    <div class="contact-row"><div class="name"><a href="http://www.lasterrazasdebecerril.es" onclick="openExternalLink(this.href, event)" style="text-decoration: none;">www.lasterrazasdebecerril.es</a></div><div class="icon web" onclick="openExternalLink('http://www.lasterrazasdebecerril.es', event)"></div></div>
-                    <div class="contact-row" onclick="openEmail('contacto@lasterrazasdebecerril.es')"><div class="name">contacto@lasterrazasdebecerril.es</div><div class="icon mail"></div></div>
-                    <div class="contact-row" onclick="actionCall('918538002')"><div class="name">Reservas, sólamente vía teléfono 91 853 8002</div><div class="icon phone"></div></div>
-                    <div class="contact-row" onclick="goToContacto()"><div class="name">Formulario de contacto</div><div class="icon form"></div></div>
-                    <div class="contact-row" onclick="openExternalLink('http://blog.lasterrazasdebecerril.es', event)"><div class="name">Nuestro Blog</div><div class="icon blog"></div></div>
-                    <div class="contact-row center" style="padding-top:18px;"><div class="name">Síguenos en nuestras redes sociales</div></div>
+                    <div class="contact-row" onclick="goToLocalizacion()"><div class="name">Paseo de San Sebastián 3. Becerril de la Sierra</div><div class="icon"><div class="icon map"></div></div></div>
+                    <div class="contact-row"><div class="name"><a href="http://www.lasterrazasdebecerril.es" onclick="openExternalLink(this.href, event)" style="text-decoration: none;">www.lasterrazasdebecerril.es</a></div><div class="icon"><div class="icon web" onclick="openExternalLink('http://www.lasterrazasdebecerril.es', event)"></div></div></div>
+                    <div class="contact-row" onclick="openEmail('contacto@lasterrazasdebecerril.es')"><div class="name">contacto@lasterrazasdebecerril.es</div><div class="icon"><div class="icon mail"></div></div></div>
+                    <div class="contact-row" onclick="actionCall('918538002')"><div class="name">Reservas, sólamente vía teléfono 91 853 8002</div><div class="icon"><div class="icon phone"></div></div></div>
+                    <div class="contact-row" onclick="goToContacto()"><div class="name">Formulario de contacto</div><div class="icon"><div class="icon form"></div></div></div>
+                    <div class="contact-row" onclick="openExternalLink('http://blog.lasterrazasdebecerril.es', event)"><div class="name">Nuestro Blog</div><div class="icon"><div class="icon blog"></div></div></div>
+                    <div class="contact-row center" style="padding-top:18px;"><div class="icon"><div class="name">Síguenos en nuestras redes sociales</div></div></div>
                     <div class="horizontal center">
                         <div class="icon facebook" onclick="openExternalLink('https://www.facebook.com/restaurante.lasterrazasdebecerril', event)"></div>
                         <div class="icon twitter" onclick="openExternalLink('https://twitter.com/LasTerrazasRest/', event)"></div>
@@ -398,7 +398,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('galerias.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -438,7 +438,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('galeria.html');"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -462,7 +462,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('foto.html');current_page='galeria.html';"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
@@ -487,7 +487,7 @@
         <ons-toolbar class="toolbar">
             <div class="center header-title">
                 <div class="backButton" onclick="splash.popPage('external.html');isExternalShowing = false;"></div>
-                <div class="rightButton buttonInfo" onclick="splash.pushPage('info.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
             </div>
         </ons-toolbar>
 
