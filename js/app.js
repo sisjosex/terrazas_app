@@ -739,8 +739,9 @@ module.controller('NoticiaController', function($scope) {
 
             var href = $(this).attr('href');
             $(this).attr('href', 'javascript: void(0)');
+            $(this).attr('target', '_self');
+            $(this).unbind('click');
             $(this).attr('onclick', 'openExternalLink(this.href, event)');
-
             /*$(this).on('click', function(e){
                 openExternalLink(href, e);
             });*/
@@ -1085,6 +1086,10 @@ function openExternalLink(url, e) {
 
         window.plugins.ChildBrowser.showWebPage(url,
             { showLocationBar: true });
+
+        window.plugins.ChildBrowser.onClose = function () {
+            isExternalShowing = false;
+        };
 
     } catch(error) {
 
