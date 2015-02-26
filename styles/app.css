@@ -1633,6 +1633,10 @@ figure {
     text-align: center;
 }
 
+.pdf.grupo {
+    margin-top:15px;
+}
+
 
 @media screen and (min-width: 375px) {
     .cuadrado {

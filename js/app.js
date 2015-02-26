@@ -727,7 +727,7 @@ module.controller('NoticiaController', function($scope) {
 
         scopeNoticiaController = this;
 
-        current_page = 'noticia.html';
+        //current_page = 'noticia.html';
 
         $scope.labels = getLabels();
 
@@ -793,7 +793,13 @@ module.controller('GrupoController', function($scope) {
 
         current_page = 'grupo.html';
 
-        $('#grupos_descripcion').html(current_list.page.description);
+        var descripcion = current_list.page.description;
+
+        if(current_list.page.pdf != null && current_list.page.pdf != undefined && current_list.page.pdf != '' && current_list.page.pdf != 'null') {
+            $('#grupos_pdf').html(templates.btn_pdf_grupo.replaceAll('%pdf%', current_list.page.pdf)).show();
+        }
+
+        $('#grupos_descripcion').append(descripcion);
         $('#grupos_descripcion').html($('#grupos_descripcion').text());
 
         loadIntoTemplate('#grupo_list_content', current_list.list, 'grupo_list_content');
