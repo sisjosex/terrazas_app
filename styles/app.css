@@ -1487,19 +1487,41 @@ figure {
     background-size: 100% 100%;
 }
 
+
 .icon.facebook {
     background: url('../img/btn_facebook.png') 0 0 no-repeat transparent;
     background-size: 100% 100%;
-    width:60px;
-    height:60px;
+    width: 52px;
+    height: 63px;
 }
 
 .icon.twitter {
     background: url('../img/btn_twitter.png') 0 0 no-repeat transparent;
     background-size: 100% 100%;
-    width:60px;
-    height:60px;
+    width: 52px;
+    height: 63px;
 }
+
+.icon.google {
+    background: url('../img/btn_google.png') 0 0 no-repeat transparent;
+    background-size: 100% 100%;
+    width: 52px;
+    height: 63px;
+}
+.icon.trip_advisor {
+    background: url('../img/btn_trip_advisor.png') 0 0 no-repeat transparent;
+    background-size: 100% 100%;
+    width: 52px;
+    height: 63px;
+}
+
+.icon.yelp {
+    background: url('../img/btn_yelp.png') 0 0 no-repeat transparent;
+    background-size: 100% 100%;
+    width: 52px;
+    height: 63px;
+}
+
 
 .button.enviar {
     background: url('../img/btn_enviar.png') 0 0 no-repeat transparent;
