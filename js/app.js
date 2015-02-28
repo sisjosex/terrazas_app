@@ -438,6 +438,9 @@ module.controller('HomeController', function($scope) {
 
                 }, 1000);
 
+
+                registerNotifications();
+
             });
 
         }, 100);

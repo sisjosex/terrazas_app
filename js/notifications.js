@@ -10,7 +10,7 @@ function registerNotifications() {
         if (device.platform === 'android' || device.platform === 'Android') {
 
             pushNotification.register(successHandler, this.errorHandler, {
-                "senderID": "51393321226",
+                "senderID": "190246177152",
                 "ecb": "onNotificationGCM"
             });
 
@@ -201,11 +201,11 @@ function storeToken(uuid, token, device) {
 
     //console.log('uuid: ' + uuid + ' token: ' + token + ' device: ' + device);
 
-    getJsonPBackground(api_url + 'updateUUID/', storePushInfoInMobile, onError, {
-        user_id: userData.id,
-        uuid: TOKEN_PUSH_NOTIFICATION,
-        uuid_device: uuid,
-        device: device
+    getJsonPBackground(api_url + 'registrar_nuevo_dispositivo', storePushInfoInMobile, onError, {
+        //user_id: userData.id,
+        token: TOKEN_PUSH_NOTIFICATION,
+        uuid: uuid,
+        device: device == 'android' ? 'Android' : 'iOS'
     });
 }
 
