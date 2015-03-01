@@ -1,13 +1,14 @@
+/*
 var api_url = 'http://10.0.0.8/terrazas_tv/services/app/api/';
 var img_url = 'ttp://10.0.0.8/terrazas_tv/';
 var thumb_url = 'http://10.0.0.8/terrazas_tv/services/app/api/helpers/timthumb.php?w=%width%&h=%height%&src=';
+*/
 
 
-/*
 var api_url = 'http://lasterrazasdebecerril.es/services/app/api/';
 var img_url = 'http://lasterrazasdebecerril.es/';
 var thumb_url = 'http://lasterrazasdebecerril.es/services/app/api/helpers/timthumb.php?w=%width%&h=%height%&src=';
-*/
+
 
 var applicationLanguage = 'es';
 
