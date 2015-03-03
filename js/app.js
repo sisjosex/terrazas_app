@@ -76,7 +76,14 @@ function goToCartaDetalle(section) {
 
     $('#carta_list').html('');
 
-    loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_content');
+    if(section === 'entrante') {
+
+        loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_entrante_content');
+
+    } else {
+
+        loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_content');
+    }
 
     scrolls['carta_scroll'].refresh();
 

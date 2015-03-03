@@ -2,6 +2,15 @@ var templates = {
 
     carta_list_content: '<div class="price-row"><div class="name">%nombre%</div><div class="price">%precio%€</div></div>',
 
+    carta_list_entrante_content: '<div class="price-row"><div class="name">%nombre%</div>' +
+        '<div class="price fixed">' +
+            '<div class="price-name">Racion</div>' +
+            '<div class="price-name">1/2</div>' +
+            '<div class="price-price">%precio%€</div>' +
+            '<div class="price-price">%medio%</div>' +
+        '</div>' +
+        '</div>',
+
     list_single: '<div class="price-row vinos_list"><div class="name">%nombre%</div><div class="price">%precio%€</div></div>',
 
     fotos_list_content: '<div class="galeria-item button nobutton" onclick="goToFoto(%index%)"><img src="http://lasterrazasdebecerril.es/img/fotos/thumbnails/%url%" onload="refreshGaleriaScroll()"></div>',

@@ -1664,6 +1664,32 @@ figure {
     text-decoration: underline;
 }
 
+.price.fixed {
+    min-width: 88px;
+    display: table-cell;
+}
+
+.price-name {
+    font-weight: bold;
+    display: none;
+    width: 44px;
+    font-size:15px;
+    text-align: right;
+}
+
+.price-price {
+    display: inline-block;
+    width: 44px;
+    color:#b27814;
+    text-align: right;
+    font-size:18px;
+    vertical-align: bottom;
+}
+
+#carta_list .price-row:nth-child(1) .price.fixed .price-name {
+    display:inline-block;
+}
+
 @media screen and (min-width: 375px) {
     .cuadrado {
         min-width: 87px;
