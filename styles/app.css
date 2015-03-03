@@ -1252,6 +1252,7 @@ label.checkbox {
 
 .price-row .name, .price-row .price {
     display:table-cell;
+    vertical-align: bottom;
 }
 
 .price-row .name {
