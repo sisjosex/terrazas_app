@@ -1096,6 +1096,9 @@ function openExternalLink(url, e) {
         }
     }*/
 
+    window.open(url, '_blank', 'location=yes');
+
+    /*
     try {
 
         //window.plugins.ChildBrowser.showWebPage(url, { showLocationBar: true });
@@ -1109,7 +1112,7 @@ function openExternalLink(url, e) {
     } catch(error) {
 
         splash.pushPage('external.html', {});
-    }
+    }*/
 
     if (e != undefined) {
         e.stopPropagation();
@@ -1118,7 +1121,10 @@ function openExternalLink(url, e) {
 }
 
 function openPdf(url) {
-    try {
+
+    window.open(url, '_blank', 'location=yes');
+
+    /*try {
 
         //window.plugins.ChildBrowser.showWebPage(url, { showLocationBar: true });
 
@@ -1128,7 +1134,7 @@ function openPdf(url) {
 
         window.open(url, '_system');
         //splash.pushPage('external.html', {});
-    }
+    }*/
 }
 
 /*
