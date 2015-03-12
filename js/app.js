@@ -497,11 +497,12 @@ module.controller('CartaController', function($scope) {
 
         $scope.labels = getLabels();
 
-        loadIntoTemplate('#carta_list', carta_data.entrante, 'carta_list_content');
-
         ons.compile($('#carta_scroll')[0]);
 
         initScroll('carta_scroll');
+
+        goToCartaDetalle('entrante');
+        //loadIntoTemplate('#carta_list', carta_data.entrante, 'carta_list_content');
 
     });
 });
