@@ -1096,7 +1096,7 @@ function openExternalLink(url, e) {
         }
     }*/
 
-    window.open(url, '_blank', 'location=yes');
+    window.open(url, '_blank', 'location=yes,closebuttoncaption=Cerrar');
 
     /*
     try {
@@ -1122,7 +1122,7 @@ function openExternalLink(url, e) {
 
 function openPdf(url) {
 
-    window.open(url, '_blank', 'location=yes');
+    window.open(url, '_blank', 'location=yes,closebuttoncaption=Cerrar');
 
     /*try {
 
