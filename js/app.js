@@ -1100,7 +1100,7 @@ function openExternalLink(url, e) {
 
         //window.plugins.ChildBrowser.showWebPage(url, { showLocationBar: true });
 
-        cordova.InAppBrowser.open(url, '_blank', 'location=yes');
+        window.open(url, '_blank', 'location=yes');
 
         window.plugins.ChildBrowser.onClose = function () {
             isExternalShowing = false;
@@ -1122,7 +1122,7 @@ function openPdf(url) {
 
         //window.plugins.ChildBrowser.showWebPage(url, { showLocationBar: true });
 
-        cordova.InAppBrowser.open(url, '_blank', 'location=yes');
+        window.open(url, '_blank', 'location=yes');
 
     } catch(error) {
 
