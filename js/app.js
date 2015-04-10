@@ -288,7 +288,7 @@ function loadApplicationParams(callback) {
 
     getJsonPBackground(api_url + 'getParams/', function(data){
 
-
+        $('#horario').html();
 
         applicationParams = data;
 
@@ -300,6 +300,14 @@ function loadApplicationParams(callback) {
 
     }, {});
 }
+
+setInterval(function(){
+    loadApplicationParams(function(){
+
+        $('#horario').html( applicationParams.restaurante.horario_atencion );
+
+    });
+}, 15000);
 
 function refreshHomeScroll() {
 
