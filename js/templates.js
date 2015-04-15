@@ -22,6 +22,12 @@ var templates = {
     page_list_content: '<div class="horizontal"><div class="title">%nombre%</div> <div class="description">%descripcion%</div>'+
     '<figure><img src="http://lasterrazasdebecerril.es/img/fotos/%url%" alt="" onload="refreshPageScroll()"/></figure></div>',
 
+    nosotros_list_content: '<div class="horizontal"><div class="title">%nombre%</div> <div class="description">%descripcion%</div>'+
+    '<figure><img src="http://lasterrazasdebecerril.es/img/fotos/%url%" alt="" onload="refreshNosotrosScroll()"/></figure></div>',
+
+    ambientes_list_content: '<div class="horizontal"><div class="title">%nombre%</div> <div class="description">%descripcion%</div>'+
+    '<figure><img src="http://lasterrazasdebecerril.es/img/fotos/%url%" alt="" onload="refreshAmbientesScroll()"/></figure></div>',
+
     grupo_list_content: '<div class="price-row"><div class="name">%nombre%</div><div class="price">%precio%€</div>' +
     '</div>'+
     '<div class="menu_grupo_content">'+

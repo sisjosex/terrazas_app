@@ -72,7 +72,10 @@ function goToLocalizacion() {
     splash.pushPage('localizacion.html', {});
 }
 
+var current_carta_section='';
 function goToCartaDetalle(section) {
+
+    current_carta_section = section;
 
     $('#carta_list').html('');
 
@@ -93,6 +96,8 @@ function goToCartaDetalle(section) {
 }
 
 function goToVinoDetalle(section) {
+
+    current_carta_section = section;
 
     $('#carta_list').html('');
 
@@ -151,7 +156,11 @@ function goToGalerias() {
     splash.pushPage('galerias.html', {});
 }
 
+var current_galeria = '';
 function goToGaleriaList(id) {
+
+    current_galeria = id;
+
     getJsonP(api_url + 'get_galeria', function(data){
 
         current_list = data;
@@ -205,7 +214,7 @@ function goToAmbientes() {
 
         current_list = data;
 
-        splash.pushPage('page.html', {});
+        splash.pushPage('ambientes.html', {});
 
         if (current_list.list) {
 
@@ -270,7 +279,7 @@ function getNosotros() {
 
         current_list = data;
 
-        splash.pushPage('page.html', {});
+        splash.pushPage('nosotros.html', {});
 
         if(current_list.list) {
 
@@ -302,11 +311,9 @@ function loadApplicationParams(callback) {
 }
 
 setInterval(function(){
-    loadApplicationParams(function(){
 
-        $('#horario').html( applicationParams.restaurante.horario_atencion );
+    refreshPage();
 
-    });
 }, 15000);
 
 function refreshHomeScroll() {
@@ -317,6 +324,16 @@ function refreshHomeScroll() {
 function refreshPageScroll() {
 
     scrolls['page_scroll'].refresh();
+}
+
+function refreshNosotrosScroll() {
+
+    scrolls['nosotros_scroll'].refresh();
+}
+
+function refreshAmbientesScroll() {
+
+    scrolls['ambientes_scroll'].refresh();
 }
 
 function refreshNovedadesScroll() {
@@ -361,6 +378,187 @@ actionCall = function(phone) {
 
 function infoAction() {
     actionCall('918538002');
+}
+
+
+function refreshPage() {
+    switch( splash.getCurrentPage().name ) {
+        case '':
+        {//home
+
+            loadApplicationParams(function () {
+
+                $('#horario').html(applicationParams.restaurante.horario_atencion);
+
+            });
+
+            break;
+        }
+        case 'menudiario.html': {
+
+            getJsonPBackground(api_url + 'get_menudiario', function(data){
+
+                current_list = data;
+
+                if(current_list.data.dia_spanish) {
+                    splash.getCurrentPage().element.find('.title').html(current_list.data.dia_spanish + ' - ' + current_list.data.dia_numerico + ' ' + current_list.data.mes_spanish);
+                }
+
+                var content = '';
+                if(current_list.data.tipo_menu == 'diario') {
+
+                    if(current_list.data.primeros) {
+                        content += '<h3>Primeros</h3><div class="description_listado">' + current_list.data.primeros + '</div>';
+                    }
+
+                    if(current_list.data.segundos) {
+                        content += '<h3>Segundos</h3><div class="description_listado">' + current_list.data.segundos + '</div>';
+                    }
+
+                    if(current_list.data.precio_descripcion) {
+                        content += '<h3 class="normal">'+ current_list.data.precio_descripcion + '&euro;</h3>';
+                    }
+                }
+
+                if(current_list.data.especialidades) {
+                    content += '<h3>RECOMENDACIONES</h3><div class="description_listado">' + current_list.data.especialidades + '</div>';
+                }
+
+                $('#menu_diario_content').html(content);
+
+            }, function(){}, {});
+
+            break;
+        }
+
+        case 'carta.html': {
+
+            getJsonPBackground(api_url + 'get_carta', function(data){
+
+                carta_data = data;
+
+                if(current_carta_section == 'nuestros_vinos') {
+
+                    goToVinoDetalle(current_carta_section);
+
+                } else {
+
+                    goToCartaDetalle(current_carta_section);
+                }
+
+            }, function(){}, {});
+
+            break;
+        }
+
+        case 'grupo.html': {
+
+            getJsonP(api_url + 'get_menu_grupos', function(data){
+
+                current_list = data;
+
+                var descripcion = current_list.page.description;
+
+                $(splash.getCurrentPage().element).find('#grupos_descripcion').html('');
+
+                if(current_list.page.pdf != null && current_list.page.pdf != undefined && current_list.page.pdf != '' && current_list.page.pdf != 'null') {
+                    $(splash.getCurrentPage().element).find('#grupos_pdf').html(templates.btn_pdf_grupo.replaceAll('%pdf%', current_list.page.pdf)).show();
+                }
+
+                $(splash.getCurrentPage().element).find('#grupos_descripcion').append(descripcion);
+                $(splash.getCurrentPage().element).find('#grupos_descripcion').html($(splash.getCurrentPage().element).find('#grupos_descripcion').text());
+
+                loadIntoTemplate($(splash.getCurrentPage().element).find('#grupo_list_content'), current_list.list, 'grupo_list_content');
+
+                $(splash.getCurrentPage().element).find('#grupo_list_content').append(templates.btn_subir);
+
+            }, function(){}, {});
+
+            break;
+        }
+
+        case 'nosotros.html': {
+
+            getJsonPBackground(api_url + 'get_laterraza', function(data){
+
+                current_list = data;
+
+                loadIntoTemplate('#nosotros_content', current_list.list, 'nosotros_list_content');
+
+                $(splash.getCurrentPage().element).find('#nosotros_content').append(templates.btn_subir);
+
+                $(splash.getCurrentPage().element).find('a').each(function(){
+
+                    var href = $(this).attr('href');
+                    $(this).attr('href', 'javascript: void(0)');
+
+                    $(this).on('click', function(e){
+                        openExternalLink(href, e);
+                    });
+
+                });
+
+            }, function(){}, {});
+        }
+
+        case 'ambientes.html': {
+
+            getJsonPBackground(api_url + 'get_ambientes', function (data) {
+
+                current_list = data;
+
+                loadIntoTemplate('#ambientes_content', current_list.list, 'ambientes_list_content');
+
+                $(splash.getCurrentPage().element).find('#ambientes_content').append(templates.btn_subir);
+
+                $(splash.getCurrentPage().element).find('a').each(function(){
+
+                    var href = $(this).attr('href');
+                    $(this).attr('href', 'javascript: void(0)');
+
+                    $(this).on('click', function(e){
+                        openExternalLink(href, e);
+                    });
+
+                });
+
+            }, function () {
+            }, {});
+        }
+
+
+        case 'novedades.html': {
+
+            getJsonPBackground(api_url + 'get_novedades', function (data) {
+
+                current_list = data;
+
+                loadIntoTemplate($(splash.getCurrentPage().element).find('#novedades_content'), current_list.list, 'novedades_list_content');
+
+                $(splash.getCurrentPage().element).find('#novedades_content').append(templates.btn_subir);
+
+            }, function () {
+            }, {});
+
+            break;
+        }
+
+        case 'galeria.html': {
+
+            getJsonPBackground(api_url + 'get_galeria', function(data){
+
+                current_list = data;
+
+                $('#galeria_content').html('');
+
+                loadIntoTemplate('#galeria_content', current_list.list, 'fotos_list_content');
+
+            }, function(){}, {galeria_id: current_galeria});
+
+            break;
+        }
+
+    }
 }
 
 
@@ -718,6 +916,71 @@ module.controller('PageController', function($scope) {
 
     });
 });
+
+var NosotrosController;
+module.controller('NosotrosController', function($scope) {
+    ons.ready(function() {
+
+        scopeVinosController = this;
+
+        current_page = 'nosotros.html';
+
+        $scope.labels = getLabels();
+
+        loadIntoTemplate('#nosotros_content', current_list.list, 'nosotros_list_content');
+
+        $('#nosotros_content').append(templates.btn_subir);
+
+        $('#nosotros_content a').each(function(){
+
+            var href = $(this).attr('href');
+            $(this).attr('href', 'javascript: void(0)');
+
+            $(this).on('click', function(e){
+                openExternalLink(href, e);
+            });
+
+        });
+
+        ons.compile($('#nosotros_content')[0]);
+
+        initScroll('nosotros_scroll');
+
+    });
+});
+
+var AmbientesController;
+module.controller('AmbientesController', function($scope) {
+    ons.ready(function() {
+
+        scopeVinosController = this;
+
+        current_page = 'ambientes.html';
+
+        $scope.labels = getLabels();
+
+        loadIntoTemplate('#ambientes_content', current_list.list, 'ambientes_list_content');
+
+        $('#ambientes_content').append(templates.btn_subir);
+
+        $('#ambientes_content a').each(function(){
+
+            var href = $(this).attr('href');
+            $(this).attr('href', 'javascript: void(0)');
+
+            $(this).on('click', function(e){
+                openExternalLink(href, e);
+            });
+
+        });
+
+        ons.compile($('#ambientes_content')[0]);
+
+        initScroll('ambientes_scroll');
+
+    });
+});
+
 
 var scopeNovedadesController;
 module.controller('NovedadesController', function($scope) {

@@ -281,6 +281,42 @@
     </ons-page>
 </ons-template>
 
+<ons-template id="nosotros.html">
+    <ons-page ng-controller="NosotrosController" var="grupo" class="normal-page">
+        <ons-toolbar class="toolbar">
+            <div class="center header-title">
+                <div class="backButton" onclick="splash.popPage('grupo.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
+            </div>
+        </ons-toolbar>
+
+        <div id="nosotros_scroll" class="scrollable">
+
+            <div id="nosotros_content" class="scroll-content scrollfix list">
+
+            </div>
+        </div>
+    </ons-page>
+</ons-template>
+
+<ons-template id="ambientes.html">
+    <ons-page ng-controller="AmbientesController" var="grupo" class="normal-page">
+        <ons-toolbar class="toolbar">
+            <div class="center header-title">
+                <div class="backButton" onclick="splash.popPage('grupo.html');"></div>
+                <div class="rightButton buttonInfo" onclick="infoAction()"></div>
+            </div>
+        </ons-toolbar>
+
+        <div id="ambientes_scroll" class="scrollable">
+
+            <div id="ambientes_content" class="scroll-content scrollfix list">
+
+            </div>
+        </div>
+    </ons-page>
+</ons-template>
+
 <ons-template id="page.html">
     <ons-page ng-controller="PageController" var="grupo" class="normal-page">
         <ons-toolbar class="toolbar">
