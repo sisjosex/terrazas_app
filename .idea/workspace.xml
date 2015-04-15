@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c450b604-d42a-46ef-9d56-9c45517ac89d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/templates.js" afterPath="$PROJECT_DIR$/js/templates.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="c450b604-d42a-46ef-9d56-9c45517ac89d" name="Default" comment="" />
     <ignored path="terrazas_app.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -60,8 +55,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.8366013" vertical-offset="10317" max-vertical-offset="24123">
-              <caret line="637" column="41" selection-start-line="637" selection-start-column="41" selection-end-line="637" selection-end-column="41" />
+            <state vertical-scroll-proportion="0.44771242" vertical-offset="10317" max-vertical-offset="24123">
+              <caret line="623" column="45" selection-start-line="623" selection-start-column="45" selection-end-line="623" selection-end-column="45" />
               <folding>
                 <marker date="1429131545924" expanded="true" signature="12985:13012" placeholder="..." />
               </folding>
@@ -757,8 +752,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8366013" vertical-offset="10317" max-vertical-offset="24123">
-          <caret line="637" column="41" selection-start-line="637" selection-start-column="41" selection-end-line="637" selection-end-column="41" />
+        <state vertical-scroll-proportion="0.44771242" vertical-offset="10317" max-vertical-offset="24123">
+          <caret line="623" column="45" selection-start-line="623" selection-start-column="45" selection-end-line="623" selection-end-column="45" />
           <folding>
             <marker date="1429131545924" expanded="true" signature="12985:13012" placeholder="..." />
           </folding>
