@@ -492,8 +492,13 @@ function refreshPage() {
                     var href = $(this).attr('href');
                     $(this).attr('href', 'javascript: void(0)');
 
+                    $(this).attr('href', '');
+                    $(this).css('text-decoration', 'none');
+
                     $(this).on('click', function(e){
-                        openExternalLink(href, e);
+                        e.preventDefault();
+                        e.stopPropagation();
+                        //openExternalLink(href, e);
                     });
 
                 });
@@ -515,9 +520,13 @@ function refreshPage() {
 
                     var href = $(this).attr('href');
                     $(this).attr('href', 'javascript: void(0)');
+                    $(this).attr('href', '');
+                    $(this).css('text-decoration', 'none');
 
                     $(this).on('click', function(e){
-                        openExternalLink(href, e);
+                        e.preventDefault();
+                        e.stopPropagation();
+                        //openExternalLink(href, e);
                     });
 
                 });
@@ -935,9 +944,13 @@ module.controller('NosotrosController', function($scope) {
 
             var href = $(this).attr('href');
             $(this).attr('href', 'javascript: void(0)');
+            $(this).attr('href', '');
+            $(this).css('text-decoration', 'none');
 
             $(this).on('click', function(e){
-                openExternalLink(href, e);
+                e.preventDefault();
+                e.stopPropagation();
+                //openExternalLink(href, e);
             });
 
         });
@@ -967,9 +980,13 @@ module.controller('AmbientesController', function($scope) {
 
             var href = $(this).attr('href');
             $(this).attr('href', 'javascript: void(0)');
+            $(this).attr('href', '');
+            $(this).css('text-decoration', 'none');
 
             $(this).on('click', function(e){
-                openExternalLink(href, e);
+                e.preventDefault();
+                e.stopPropagation();
+                //openExternalLink(href, e);
             });
 
         });
@@ -1020,7 +1037,11 @@ module.controller('NoticiaController', function($scope) {
         $('#noticia_description a').each(function(){
 
             var href = $(this).attr('href');
+
             $(this).attr('href', 'javascript: void(0)');
+            $(this).attr('href', '');
+            $(this).css('text-decoration', 'none');
+
             $(this).attr('target', '_self');
             $(this).unbind('click');
             //$(this).attr('onclick', 'openExternalLink(this.href, event)');
@@ -1028,7 +1049,9 @@ module.controller('NoticiaController', function($scope) {
             $(this).addClass('nobutton');
             $(this).addClass('linkbutton');
             $(this).on('click', function(e){
-                openExternalLink(href, e);
+                e.preventDefault();
+                e.stopPropagation();
+                //openExternalLink(href, e);
             });
 
         });
