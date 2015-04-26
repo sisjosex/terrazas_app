@@ -31,6 +31,16 @@ try {
     TOKEN_PUSH_NOTIFICATION = 0;
 }
 
+if( TOKEN_PUSH_NOTIFICATION == '' || TOKEN_PUSH_NOTIFICATION == undefined || TOKEN_PUSH_NOTIFICATION == 'undefined' ){
+    TOKEN_PUSH_NOTIFICATION = 0;
+}
+
+/*try {
+    TOKEN_PUSH_NOTIFICATION = (localStorage.getItem("push_token") !== null || localStorage.getItem("push_token") !== undefined) ? JSON.parse(localStorage.getItem("push_token")) : 0;;
+} catch(error) {
+    TOKEN_PUSH_NOTIFICATION = 0;
+}*/
+
 var DEVICE_UUID = (localStorage.getItem("uuid") !== null || localStorage.getItem("uuid") !== undefined) ? JSON.parse(localStorage.getItem("uuid")) : 0;
 
 

@@ -660,7 +660,7 @@ module.controller('HomeController', function($scope) {
 
                 }, 1000);
 
-
+                verifyNotification();
                 registerNotifications();
 
             });
