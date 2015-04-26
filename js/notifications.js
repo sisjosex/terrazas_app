@@ -53,9 +53,9 @@ function onNotificationGCM(e) {
         case 'registered':
             if ( e.regid.length > 0 )
             {
-                if(TOKEN_PUSH_NOTIFICATION === 0){
+                //if(TOKEN_PUSH_NOTIFICATION === 0){
                     storeToken(device.uuid, e.regid, 'android');
-                }
+                //}
             }
             break;
 
