@@ -2,8 +2,9 @@
 <widget xmlns		= "http://www.w3.org/ns/widgets"
 	xmlns:gap	= "http://phonegap.com/ns/1.0"
 	id		    = "es.lasterrazasdebecerril.restaurant"
-    versionCode = "12.1"
-	version 	= "12.1">
+    	versionCode = "14.0"
+	android-versionCode="1400"
+	version 	= "14.0">
 
 	<name>LasTerrazas</name>
 
@@ -17,7 +18,7 @@
 	</author>
     
     <gap:config-file platform="ios" parent="CFBundleShortVersionString">
-        <string>12.1</string>
+        <string>14.0</string>
     </gap:config-file>
     
     <!--
