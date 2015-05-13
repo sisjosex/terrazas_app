@@ -1592,7 +1592,7 @@ figure {
 }
 
 #horario {
-    font-size:14px;
+    font-size: 13.9px;
 }
 
 
@@ -1717,3 +1717,16 @@ figure {
     }
 }
 
+.header-logo-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
+    margin: 0;
+}
+
+.img-logo {
+    max-width:100%;
+    width:100%;
+    height:auto;
+}

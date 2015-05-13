@@ -624,9 +624,9 @@ module.controller('HomeController', function($scope) {
 
         setTimeout(function() {
 
-            height = $(window).height() - ( $('#main_content').height() + 60 );
+            height = $(window).height() - ( $('#main_content').height() + 60 + $('.header-logo-container').outerHeight());
             $('#home_images').height( height );
-            $('#homePage .page__content').css('top', height+'px');
+            $('#homePage .page__content').css('top', (height + $('.header-logo-container').outerHeight())+'px');
 
             loadApplicationParams(function(){
 
@@ -652,9 +652,9 @@ module.controller('HomeController', function($scope) {
 
                     refreshHomeScroll();
 
-                    height = $(window).height() - ( $('#main_content').height() + $('#horario').height() - 6 - 15 );
+                    height = $(window).height() - ( $('#main_content').height() + $('#horario').height() - 6 - 15 + $('.header-logo-container').outerHeight() );
                     $('#home_images').height( height );
-                    $('#homePage .page__content').css('top', height+'px');
+                    $('#homePage .page__content').css('top', (height + $('.header-logo-container').outerHeight())+'px');
 
                     try { navigator.splashscreen.hide(); } catch(error){}
 
