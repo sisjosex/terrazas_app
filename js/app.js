@@ -53,134 +53,223 @@ var current_list = [];
 var carta_data = {};
 function goToCarta() {
 
-    getJsonP(api_url + 'get_carta', function(data){
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        carta_data = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('carta.html', {});
+        getJsonP(api_url + 'get_carta', function (data) {
 
-    }, function(){}, {});
+            carta_data = data;
+
+            splash.pushPage('carta.html', {});
+
+        }, function () {
+        }, {});
+
+    }
 }
 
 function openEmail(email) {
 
-    window.open('mailto:'+email+'?subject=Contacto&body=');
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
+
+            page_loading = false;
+        });
+
+        window.open('mailto:' + email + '?subject=Contacto&body=');
+    }
 }
 
 function goToLocalizacion() {
 
-    splash.pushPage('localizacion.html', {});
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
+
+            page_loading = false;
+        });
+
+        splash.pushPage('localizacion.html', {});
+    }
 }
 
 var current_carta_section='';
 function goToCartaDetalle(section) {
 
-    current_carta_section = section;
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-    $('#carta_list').html('');
+            page_loading = false;
+        });
 
-    if(section === 'entrante') {
+        current_carta_section = section;
 
-        loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_entrante_content');
+        $('#carta_list').html('');
 
-    } else {
+        if (section === 'entrante') {
 
-        loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_content');
+            loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_entrante_content');
+
+        } else {
+
+            loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_content');
+        }
+
+        scrolls['carta_scroll'].refresh();
     }
-
-    scrolls['carta_scroll'].refresh();
-
-    /*ons.compile($('#carta_scroll')[0]);
-
-    initScroll('carta_scroll');*/
 }
 
 function goToVinoDetalle(section) {
 
-    current_carta_section = section;
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-    $('#carta_list').html('');
+            page_loading = false;
+        });
 
-    loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
+        current_carta_section = section;
 
-    $('#carta_list').append(templates.btn_subir);
+        $('#carta_list').html('');
 
-    //ons.compile($('#carta_list')[0]);
+        loadIntoTemplate('#carta_list', carta_data[section], 'carta_list_vino_content');
 
-    //initScroll('carta_scroll');
+        $('#carta_list').append(templates.btn_subir);
 
-    scrolls['carta_scroll'].refresh();
-    /*ons.compile($('#carta_scroll')[0]);*/
+        //ons.compile($('#carta_list')[0]);
+
+        //initScroll('carta_scroll');
+
+        scrolls['carta_scroll'].refresh();
+        /*ons.compile($('#carta_scroll')[0]);*/
+    }
 }
 
 function goToContacto() {
 
-    splash.pushPage('contacto.html', {});
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
+
+            page_loading = false;
+        });
+
+        splash.pushPage('contacto.html', {});
+    }
 }
 
 function goToNovedadDetalle(index, event) {
-/*
-    event.preventDefault();
-    event.stopPropagation();*/
 
-    current_noticia = current_list.list[index];
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-    splash.pushPage('noticia.html', {});
+            page_loading = false;
+        });
 
-    event.stopPropagation();
+        current_noticia = current_list.list[index];
+
+        splash.pushPage('noticia.html', {});
+
+        event.stopPropagation();
+    }
 }
 
 function goToVinosCategoria(id) {
 
-    getJsonP(api_url + 'get_categoria_vinos', function(data){
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        current_list = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('vinos.html', {id: id});
+        getJsonP(api_url + 'get_categoria_vinos', function (data) {
 
-        if(current_list.list) {
+            current_list = data;
+
+            splash.pushPage('vinos.html', {id: id});
+
+            if (current_list.list) {
 
 
-        }
+            }
 
-    }, function(){}, {id: id});
+        }, function () {
+        }, {id: id});
+    }
 }
 
 function goToRedes() {
 
-    splash.pushPage('redes.html', {});
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
+
+            page_loading = false;
+        });
+
+        splash.pushPage('redes.html', {});
+    }
 }
 
 function goToGalerias() {
 
-    splash.pushPage('galerias.html', {});
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
+
+            page_loading = false;
+        });
+
+        splash.pushPage('galerias.html', {});
+    }
 }
 
 var current_galeria = '';
+var page_loading = false;
 function goToGaleriaList(id) {
 
-    current_galeria = id;
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function(){
 
-    getJsonP(api_url + 'get_galeria', function(data){
+            page_loading = false;
+        });
 
-        current_list = data;
+        current_galeria = id;
 
-        splash.pushPage('galeria.html', {galeria_id: id});
+        getJsonP(api_url + 'get_galeria', function (data) {
 
-        if(current_list.list) {
+            current_list = data;
+
+            splash.pushPage('galeria.html', {galeria_id: id});
+
+            if (current_list.list) {
 
 
-        }
+            }
 
-    }, function(){}, {galeria_id: id});
+        }, function () {
+        }, {galeria_id: id});
+    }
 }
 
 var current_foto;
 function goToFoto(index) {
 
-    console.log(current_page);
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function(){
 
-    if(current_page != 'foto.html') {
+            page_loading = false;
+        });
 
         current_page = 'foto.html';
 
@@ -194,52 +283,77 @@ function goToFoto(index) {
 
 function goToMenuDiario() {
 
-    getJsonP(api_url + 'get_menudiario', function(data){
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        current_list = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('menudiario.html', {});
+        getJsonP(api_url + 'get_menudiario', function (data) {
 
-        if(current_list.list) {
+            current_list = data;
+
+            splash.pushPage('menudiario.html', {});
+
+            if (current_list.list) {
 
 
-        }
+            }
 
-    }, function(){}, {});
+        }, function () {
+        }, {});
+    }
 }
 
 function goToAmbientes() {
 
-    getJsonP(api_url + 'get_ambientes', function (data) {
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        current_list = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('ambientes.html', {});
+        getJsonP(api_url + 'get_ambientes', function (data) {
 
-        if (current_list.list) {
+            current_list = data;
+
+            splash.pushPage('ambientes.html', {});
+
+            if (current_list.list) {
 
 
-        }
+            }
 
-    }, function () {
-    }, {});
+        }, function () {
+        }, {});
+    }
 }
 
 function goToAlertas() {
 
-    getJsonP(api_url + 'get_novedades', function (data) {
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        current_list = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('novedades.html', {});
+        getJsonP(api_url + 'get_novedades', function (data) {
 
-        if (current_list.list) {
+            current_list = data;
+
+            splash.pushPage('novedades.html', {});
+
+            if (current_list.list) {
 
 
-        }
+            }
 
-    }, function () {
-    }, {});
+        }, function () {
+        }, {});
+    }
 }
 
 function goToGruposCategoria() {
