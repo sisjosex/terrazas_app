@@ -358,49 +358,76 @@ function goToAlertas() {
 
 function goToGruposCategoria() {
 
-    getJsonP(api_url + 'get_menu_grupos', function(data){
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        current_list = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('grupo.html', {});
+        getJsonP(api_url + 'get_menu_grupos', function (data) {
 
-        if(current_list.list) {
+            current_list = data;
 
-        }
+            splash.pushPage('grupo.html', {});
 
-    }, function(){}, {});
+            if (current_list.list) {
+
+            }
+
+        }, function () {
+        }, {});
+    }
 }
 
 function goToGruposDetalle(id) {
 
-    getJsonP(api_url + 'get_menus', function(data){
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        current_list = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('grupo_detalle.html', {id: id});
+        getJsonP(api_url + 'get_menus', function (data) {
 
-        if(current_list.list) {
+            current_list = data;
+
+            splash.pushPage('grupo_detalle.html', {id: id});
+
+            if (current_list.list) {
 
 
-        }
+            }
 
-    }, function(){}, {categoria_menu: id});
+        }, function () {
+        }, {categoria_menu: id});
+    }
 }
 
 function getNosotros() {
 
-    getJsonP(api_url + 'get_laterraza', function(data){
+    if(!page_loading) {
+        page_loading = true;
+        setTimeout(function () {
 
-        current_list = data;
+            page_loading = false;
+        });
 
-        splash.pushPage('nosotros.html', {});
+        getJsonP(api_url + 'get_laterraza', function (data) {
 
-        if(current_list.list) {
+            current_list = data;
+
+            splash.pushPage('nosotros.html', {});
+
+            if (current_list.list) {
 
 
-        }
+            }
 
-    }, function(){}, {});
+        }, function () {
+        }, {});
+    }
 }
 
 function loadApplicationParams(callback) {
@@ -812,6 +839,10 @@ function subir() {
         initScroll('carta_scroll');
     } else if(current_page == 'carta.html'){
         initScroll('carta_scroll');
+    } else if(current_page=='nosotros.html') {
+        initScroll('nosotros_scroll');
+    } else if(current_page=='ambientes.html') {
+        initScroll('ambientes_scroll');
     }
 }
 
