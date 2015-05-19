@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c450b604-d42a-46ef-9d56-9c45517ac89d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app.js" afterPath="$PROJECT_DIR$/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/templates.js" afterPath="$PROJECT_DIR$/js/templates.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="terrazas_app.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -66,8 +67,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30882353" vertical-offset="26467" max-vertical-offset="27217">
-              <caret line="1568" column="23" selection-start-line="1568" selection-start-column="23" selection-end-line="1568" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.39108062" vertical-offset="26462" max-vertical-offset="27217">
+              <caret line="1570" column="38" selection-start-line="1570" selection-start-column="38" selection-end-line="1570" selection-end-column="38" />
               <folding>
                 <marker date="1432047878673" expanded="true" signature="16134:16161" placeholder="..." />
               </folding>
@@ -78,7 +79,7 @@
       <file leaf-file-name="notifications.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/notifications.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5134">
+            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="5134">
               <caret line="9" column="17" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
@@ -108,8 +109,8 @@
       <file leaf-file-name="templates.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/templates.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="3723">
-              <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="109" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="3723">
+              <caret line="48" column="72" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="72" />
               <folding />
             </state>
           </provider>
@@ -130,13 +131,13 @@
         <option value="$PROJECT_DIR$/js/util.js" />
         <option value="$PROJECT_DIR$/test.json" />
         <option value="$PROJECT_DIR$/lib/iscroll/iscroll.js" />
-        <option value="$PROJECT_DIR$/js/templates.js" />
         <option value="$PROJECT_DIR$/js/constants.js" />
         <option value="$PROJECT_DIR$/js/notifications.js" />
         <option value="$PROJECT_DIR$/styles/app.css" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/config.xml" />
         <option value="$PROJECT_DIR$/js/app.js" />
+        <option value="$PROJECT_DIR$/js/templates.js" />
       </list>
     </option>
   </component>
@@ -267,9 +268,6 @@
       <BehatRunner />
       <method />
     </configuration>
-    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
-      <method />
-    </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-options />
       <gulpfile />
@@ -277,6 +275,9 @@
       <arguments />
       <pass-parent-envs>true</pass-parent-envs>
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
       <method />
     </configuration>
     <list size="0" />
@@ -305,7 +306,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28723404" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29179332" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
@@ -710,14 +711,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/templates.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3723">
-          <caret line="28" column="87" selection-start-line="28" selection-start-column="87" selection-end-line="28" selection-end-column="109" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/js/constants.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="243" max-vertical-offset="1173">
@@ -779,10 +772,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/js/templates.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="544" max-vertical-offset="3723">
+          <caret line="48" column="72" selection-start-line="48" selection-start-column="72" selection-end-line="48" selection-end-column="72" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30882353" vertical-offset="26467" max-vertical-offset="27217">
-          <caret line="1568" column="23" selection-start-line="1568" selection-start-column="23" selection-end-line="1568" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.39108062" vertical-offset="26462" max-vertical-offset="27217">
+          <caret line="1570" column="38" selection-start-line="1570" selection-start-column="38" selection-end-line="1570" selection-end-column="38" />
           <folding>
             <marker date="1432047878673" expanded="true" signature="16134:16161" placeholder="..." />
           </folding>

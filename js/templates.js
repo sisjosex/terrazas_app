@@ -44,9 +44,9 @@ var templates = {
 
     btn_subir: '<div class="subir_container"><div class="button nobutton subir" onclick="subir(event)"></div></div>',
 
-    btn_pdf: '<div class="pdf_container"><div class="button nobutton pdf" onclick="openPdf(\'http://lasterrazasdebecerril.es/noticias/forceDowload/%pdf%\')"></div></div>',
+    btn_pdf: '<div class="pdf_container"><div class="button nobutton pdf" onclick="openPdf(\'http://lasterrazasdebecerril.es/files/novedades/%pdf%\')"></div></div>',
 
-    btn_pdf_grupo: '<div class="button nobutton pdf grupo" onclick="openPdf(\'http://lasterrazasdebecerril.es/paginas/forceDowload/%pdf%\')"></div>',
+    btn_pdf_grupo: '<div class="button nobutton pdf grupo" onclick="openPdf(\'http://lasterrazasdebecerril.es/files/pages/%pdf%\')"></div>',
 
     vino_list_detail: '<div class="price-row"><div class="name">%nombre%</div><div class="price">%precio%</div></div>',
 
