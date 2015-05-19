@@ -1568,7 +1568,7 @@ function openExternalLink(url, e) {
 
 function openPdf(url) {
 
-    if(device.platform == 'android') {
+    if(device.platform === 'android' || device.platform === 'Android') {
 
         window.open('https://docs.google.com/viewer?url=' + url, '_blank', 'location=yes,closebuttoncaption=Cerrar')
 
