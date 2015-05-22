@@ -1196,7 +1196,7 @@ module.controller('NoticiaController', function($scope) {
             $(this).on('click', function(e){
                 e.preventDefault();
                 e.stopPropagation();
-                //openExternalLink(href, e);
+                openExternalLink(href, e);
             });
 
         });
