@@ -47,17 +47,9 @@ var DEVICE_UUID;// = (localStorage.getItem("uuid") !== null || localStorage.getI
 var HAVE_NOTIFICATION = false;
 var TYPE_NOTIFICATION = '';
 var EVENT;
+var APP_INITIALIZED = false;
 
 var offline_data = undefined;
-
-try {
-    offline_data = (localStorage.getItem("offline_data") !== null || localStorage.getItem("offline_data") !== undefined) ? JSON.parse(localStorage.getItem("offline_data")) : null;
-    if(offline_data == null) {
-        offline_data = undefined;
-    }
-} catch(error) {
-    offline_data = undefined;
-}
 
 var fileSystem;
 
