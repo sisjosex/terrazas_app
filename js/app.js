@@ -594,7 +594,7 @@ function refreshPage() {
 
         case 'grupo.html': {
 
-            getJsonP(api_url + 'get_menu_grupos', function(data){
+            getJsonPBackground(api_url + 'get_menu_grupos', function(data){
 
                 current_list = data;
 
@@ -1196,7 +1196,7 @@ module.controller('NoticiaController', function($scope) {
             $(this).on('click', function(e){
                 e.preventDefault();
                 e.stopPropagation();
-                //openExternalLink(href, e);
+                openExternalLink(href, e);
             });
 
         });
@@ -1568,7 +1568,14 @@ function openExternalLink(url, e) {
 
 function openPdf(url) {
 
-    window.open(url, '_blank', 'location=yes,closebuttoncaption=Cerrar');
+    if(device.platform === 'android' || device.platform === 'Android') {
+
+        window.open('https://docs.google.com/viewer?url=' + url, '_blank', 'location=yes,closebuttoncaption=Cerrar')
+
+    } else {
+
+        window.open(url, '_blank', 'location=yes,closebuttoncaption=Cerrar');
+    }
 
     /*try {
 

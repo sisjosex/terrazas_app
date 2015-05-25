@@ -9,7 +9,7 @@ function registerNotifications() {
 
         if (device.platform === 'android' || device.platform === 'Android') {
 
-            pushNotification.register(successHandler, this.errorHandler, {
+            pushNotification.register(successHandler, errorHandler, {
                 "senderID": "190246177152",
                 "ecb": "onNotificationGCM"
             });
@@ -18,7 +18,7 @@ function registerNotifications() {
 
         } else {
 
-            pushNotification.register(tokenHandler, this.errorHandler, {
+            pushNotification.register(tokenHandler, errorHandler, {
                 "badge": "true",
                 "sound": "true",
                 "alert": "true",
@@ -191,7 +191,9 @@ function redirectToPage(seccion, id){
     }
 }
 
-function errorHandler() {}
+function errorHandler(error) {
+    console.log(error);
+}
 
 
 function storeToken(uuid, token, device) {
