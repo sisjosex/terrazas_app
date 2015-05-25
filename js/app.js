@@ -89,10 +89,8 @@ var app = {
 
         console.log(result);
         PUSH_NOTIFICATION_REGISTER = 'ios';
-        {
-            PUSH_NOTIFICATION_TOKEN = result;
-            storeToken(device.uuid, PUSH_NOTIFICATION_TOKEN, 'ios');
-        }
+        PUSH_NOTIFICATION_TOKEN = result;
+        storeToken(device.uuid, PUSH_NOTIFICATION_TOKEN, 'ios');
     },
     onNotificationGCM: function (e) {
         switch (e.event) {
