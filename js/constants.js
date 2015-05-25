@@ -35,6 +35,9 @@ if( TOKEN_PUSH_NOTIFICATION == '' || TOKEN_PUSH_NOTIFICATION == undefined || TOK
     TOKEN_PUSH_NOTIFICATION = 0;
 }
 
+var PUSH_NOTIFICATION_REGISTER;
+var PUSH_NOTIFICATION_TOKEN;
+
 /*try {
     TOKEN_PUSH_NOTIFICATION = (localStorage.getItem("push_token") !== null || localStorage.getItem("push_token") !== undefined) ? JSON.parse(localStorage.getItem("push_token")) : 0;;
 } catch(error) {
