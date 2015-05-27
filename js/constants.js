@@ -35,29 +35,24 @@ if( TOKEN_PUSH_NOTIFICATION == '' || TOKEN_PUSH_NOTIFICATION == undefined || TOK
     TOKEN_PUSH_NOTIFICATION = 0;
 }
 
+var PUSH_NOTIFICATION_REGISTER;
+var PUSH_NOTIFICATION_TOKEN;
+
 /*try {
     TOKEN_PUSH_NOTIFICATION = (localStorage.getItem("push_token") !== null || localStorage.getItem("push_token") !== undefined) ? JSON.parse(localStorage.getItem("push_token")) : 0;;
 } catch(error) {
     TOKEN_PUSH_NOTIFICATION = 0;
 }*/
 
-var DEVICE_UUID = (localStorage.getItem("uuid") !== null || localStorage.getItem("uuid") !== undefined) ? JSON.parse(localStorage.getItem("uuid")) : 0;
+var DEVICE_UUID;// = (localStorage.getItem("uuid") !== null || localStorage.getItem("uuid") !== undefined) ? JSON.parse(localStorage.getItem("uuid")) : 0;
 
 
 var HAVE_NOTIFICATION = false;
 var TYPE_NOTIFICATION = '';
 var EVENT;
+var APP_INITIALIZED = false;
 
 var offline_data = undefined;
-
-try {
-    offline_data = (localStorage.getItem("offline_data") !== null || localStorage.getItem("offline_data") !== undefined) ? JSON.parse(localStorage.getItem("offline_data")) : null;
-    if(offline_data == null) {
-        offline_data = undefined;
-    }
-} catch(error) {
-    offline_data = undefined;
-}
 
 var fileSystem;
 

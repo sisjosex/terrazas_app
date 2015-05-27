@@ -21,6 +21,135 @@ window.onresize = function(){
     resizeCardCarousel();
 };
 
+
+var app = {
+    // Application Constructor
+    initialize: function () {
+        this.bindEvents();
+    },
+    // Bind Event Listeners
+    //
+    // Bind any events that are required on startup. Common events are:
+    // 'load', 'deviceready', 'offline', and 'online'.
+    bindEvents: function () {
+        document.addEventListener('deviceready', this.onDeviceReady, false);
+    },
+    // deviceready Event Handler
+    //
+    // The scope of 'this' is the event. In order to call the 'receivedEvent'
+    // function, we must explicity call 'app.receivedEvent(...);'
+    onDeviceReady: function () {
+        //app.receivedEvent('deviceready');
+        //pause
+        document.addEventListener("pause", this.onPause, false);
+        //resume
+        document.addEventListener("resume", this.onResume, false);
+    },
+    // Update DOM on a Received Event
+    receivedEvent: function (id) {
+
+        var pushNotification;
+
+        try {
+
+            pushNotification = window.plugins.pushNotification;
+
+        } catch (error) {
+        }
+
+        if (pushNotification != undefined) {
+
+            if (device.platform == 'android' || device.platform == 'Android') {
+                //alert("Register called android");
+                pushNotification.register(this.successHandler, this.errorHandler, {
+                    "senderID": "629734064389",
+                    "ecb": "app.onNotificationGCM"
+                });
+            }
+            else {
+                //alert("Register called ios");
+                pushNotification.register(this.tokenHandler, this.errorHandler, {
+                    "badge": "true",
+                    "sound": "true",
+                    "alert": "true",
+                    "ecb": "app.onNotificationAPN"
+                });
+            }
+
+        }
+    },
+    // result contains any message sent from the plugin call
+    successHandler: function (result) {
+        console.log('Callback Success! Result = '+result);
+    },
+    errorHandler: function (error) {
+        alert(error);
+    },
+    tokenHandler: function (result) {
+
+        console.log(result);
+        PUSH_NOTIFICATION_REGISTER = 'ios';
+        PUSH_NOTIFICATION_TOKEN = result;
+        storeToken(device.uuid, PUSH_NOTIFICATION_TOKEN, 'ios');
+    },
+    onNotificationGCM: function (e) {
+        switch (e.event) {
+            case 'registered':
+                if (e.regid.length > 0) {
+                    PUSH_NOTIFICATION_REGISTER = 'android';
+                    PUSH_NOTIFICATION_TOKEN = e.regid;
+                    storeToken(device.uuid, PUSH_NOTIFICATION_TOKEN, 'android');
+                }
+                break;
+
+            case 'message':
+                showNotification(e, 'android');
+                break;
+
+            case 'error':
+                alert('GCM error = ' + e.msg);
+                break;
+
+            default:
+                alert('An unknown GCM event has occurred');
+                break;
+        }
+    },
+    onNotificationAPN: function (event) {
+        if (event.alert) {
+            showNotification(event, 'ios');
+        }
+    },
+    onPause: function () {
+        if(!APP_INITIALIZED) {
+            try {
+                navigator.splashscreen.show();
+            } catch (error) {
+            }
+        } else {
+            try {
+                navigator.splashscreen.hide();
+            } catch (error) {
+            }
+        }
+    },
+    onResume: function () {
+        if(!APP_INITIALIZED) {
+            try {
+                navigator.splashscreen.show();
+            } catch (error) {
+            }
+        } else {
+            try {
+                navigator.splashscreen.hide();
+            } catch (error) {
+            }
+        }
+    }
+};
+
+app.onDeviceReady();
+
 function resizeCardCarousel() {
     thumb_width = window.innerWidth;
     thumb_height = parseInt(514 / 640 * window.innerWidth) - 70;
@@ -802,7 +931,7 @@ module.controller('HomeController', function($scope) {
                 }, 1000);
 
                 verifyNotification();
-                registerNotifications();
+                app.receivedEvent('ready');
 
             });
 

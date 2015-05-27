@@ -1,7 +1,7 @@
 
 function registerNotifications() {
 
-    //console.log('registerNotifications');
+    console.log('registerNotifications');
 
     if(window.plugins && window.plugins.pushNotification) {
 
@@ -36,6 +36,8 @@ function successHandler() {}
 
 // android
 function tokenHandler(result) {
+
+    console.log(result);
 
     //if(TOKEN_PUSH_NOTIFICATION === 0){
         storeToken(device.uuid, result, 'iphone');
@@ -82,6 +84,9 @@ function onNotificationGCM(e) {
 }
 
 function onNotificationAPN(event) {
+
+    console.log(event);
+
     if (event.alert) {
         if(TOKEN_PUSH_NOTIFICATION !== 0){
             showNotification(event,'ios');
