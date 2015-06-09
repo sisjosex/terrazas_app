@@ -1314,7 +1314,7 @@ module.controller('NoticiaController', function($scope) {
 
             $(this).attr('href', 'javascript: void(0)');
             $(this).attr('href', '');
-            $(this).css('text-decoration', 'none');
+            $(this).css('text-decoration', 'underline');
 
             $(this).attr('target', '_self');
             $(this).unbind('click');
