@@ -808,7 +808,7 @@ function refreshPage() {
 
         case 'novedades.html': {
 
-            getJsonPBackground(api_url + 'get_novedades', function (data) {
+            /*getJsonPBackground(api_url + 'get_novedades', function (data) {
 
                 current_list = data;
 
@@ -817,7 +817,7 @@ function refreshPage() {
                 $(splash.getCurrentPage().element).find('#novedades_content').append(templates.btn_subir);
 
             }, function () {
-            }, {});
+            }, {});*/
 
             break;
         }
