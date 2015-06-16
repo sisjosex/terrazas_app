@@ -121,7 +121,7 @@ var app = {
         }
     },
     onPause: function () {
-        if(!APP_INITIALIZED) {
+        /*if(!APP_INITIALIZED) {
             try {
                 navigator.splashscreen.show();
             } catch (error) {
@@ -131,10 +131,10 @@ var app = {
                 navigator.splashscreen.hide();
             } catch (error) {
             }
-        }
+        }*/
     },
     onResume: function () {
-        if(!APP_INITIALIZED) {
+        /*if(!APP_INITIALIZED) {
             try {
                 navigator.splashscreen.show();
             } catch (error) {
@@ -144,7 +144,7 @@ var app = {
                 navigator.splashscreen.hide();
             } catch (error) {
             }
-        }
+        }*/
     }
 };
 
