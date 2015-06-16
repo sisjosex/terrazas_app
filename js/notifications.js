@@ -106,18 +106,14 @@ function showNotification(event, type){
 
     currentDate = date;
 
-    try {
-        navigator.notification.alert(
-            message,
-            function () {
-                redirectToPage(seccion, seccion_id);
-            },
-            getLabel("alert"),
-            getLabel("accept")
-        );
-    } catch(error) {
-        redirectToPage(seccion, seccion_id);
-    }
+    navigator.notification.alert(
+        message,
+        function () {
+            //redirectToPage(seccion, seccion_id);
+        },
+        getLabel("alert"),
+        getLabel("accept")
+    );
 }
 
 function redirectToPage(seccion, id){
