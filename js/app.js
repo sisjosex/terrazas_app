@@ -582,7 +582,7 @@ function loadApplicationParams(callback) {
 
 setInterval(function(){
 
-    //refreshPage();
+    refreshPage();
 
 }, 15000);
 
@@ -664,7 +664,7 @@ function refreshPage() {
 
             break;
         }
-        case 'menudiario.html': {
+        /*case 'menudiario.html': {
 
             getJsonPBackground(api_url + 'get_menudiario', function(data){
 
@@ -808,16 +808,16 @@ function refreshPage() {
 
         case 'novedades.html': {
 
-            /*getJsonPBackground(api_url + 'get_novedades', function (data) {
+         // getJsonPBackground(api_url + 'get_novedades', function (data) {
 
-                current_list = data;
+         //     current_list = data;
 
-                loadIntoTemplate($(splash.getCurrentPage().element).find('#novedades_content'), current_list.list, 'novedades_list_content');
+         //     loadIntoTemplate($(splash.getCurrentPage().element).find('#novedades_content'), current_list.list, 'novedades_list_content');
 
-                $(splash.getCurrentPage().element).find('#novedades_content').append(templates.btn_subir);
+         //     $(splash.getCurrentPage().element).find('#novedades_content').append(templates.btn_subir);
 
-            }, function () {
-            }, {});*/
+         //}, function () {
+            //}, {});
 
             break;
         }
@@ -836,7 +836,7 @@ function refreshPage() {
 
             break;
         }
-
+        */
     }
 }
 
