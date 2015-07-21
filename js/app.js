@@ -582,7 +582,7 @@ function loadApplicationParams(callback) {
 
 setInterval(function(){
 
-    refreshPage();
+    //refreshPage();
 
 }, 15000);
 
